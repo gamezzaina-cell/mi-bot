@@ -150,55 +150,12 @@ https://forms.gle/RDXhhJQXN2CR4S9K6
       saveData(data);
     }
 
-    return message.channel.send("🎯 Rutina registrada.");
+    return message.channel.send("🎯 Good boy.");
   }
 
   // =====================
   // !aimcheck
   // =====================
- // =====================
-// AIM CHECK (POR IDS)
-// =====================
-if (message.content === '!aimcheck') {
-
-  const ARGEA_NIRA = [
-    "915959374076338256",
-    "591699665657921556",
-    "792964396291719189",
-    "527556698307821595",
-    "695732938033201232",
-    "1187412116454518784"
-  ];
-
-  const data = loadData();
-  const day = today();
-
-  const done = data[day] || [];
-
-  const members = await message.guild.members.fetch();
-
-  const filtered = members.filter(m =>
-    !m.user.bot && ARGEA_NIRA.includes(m.id)
-  );
-
-  const doneMembers = filtered.filter(m => done.includes(m.id));
-  const missing = filtered.filter(m => !done.includes(m.id));
-
-  const listDone = doneMembers.map(m => `✅ ${m.user.tag}`).join('\n');
-  const listMissing = missing.map(m => `❌ ${m.user.tag}`).join('\n');
-
-  return message.channel.send(`# 📊 AIM PANEL (ARGEA NIRA)
-
-## ✅ Hecho:
-${listDone || "Nadie"}
-
-## ❌ Faltan:
-${listMissing || "Todos han cumplido 🎉"}`);
-}
-
-// =====================
-// CRON 23:59 L-V (POR IDS)
-// =====================
 if (message.content === '!aimcheck') {
 
   const ARGEA_NIRA = [
@@ -217,24 +174,20 @@ if (message.content === '!aimcheck') {
 
   const guild = message.guild;
 
-  // 🔥 SOLO USAMOS TU LISTA
-  const resolved = await Promise.all(
-    ARGEA_NIRA.map(async (id) => {
-      try {
-        return await guild.members.fetch(id);
-      } catch {
-        return null;
-      }
-    })
-  );
+  // 🔥 SOLO USAMOS IDS REALES DEL SERVER
+  const members = await guild.members.fetch();
 
-  const filtered = resolved.filter(m => m && !m.user.bot);
+  const filtered = ARGEA_NIRA
+    .map(id => members.get(id))
+    .filter(m => m && !m.user.bot);
 
   const doneMembers = filtered.filter(m => done.includes(m.id));
   const missing = filtered.filter(m => !done.includes(m.id));
 
   const listDone = doneMembers.map(m => `✅ ${m.user.tag}`).join('\n');
   const listMissing = missing.map(m => `❌ ${m.user.tag}`).join('\n');
+
+  console.log("ARGEA LIST:", ARGEA_NIRA);
 
   return message.channel.send(`# 📊 AIM PANEL (ARGEA NIRA)
 
@@ -244,9 +197,6 @@ ${listDone || "Nadie"}
 ## ❌ Faltan:
 ${listMissing || "Todos han cumplido 🎉"}`);
 }
-  console.log("ARGEA LIST:", ARGEA_NIRA);
-
-return message.channel.send("DEBUG: mira consola");
 // =====================
 // LOGIN
 // =====================
