@@ -5,6 +5,7 @@ const cron = require('node-cron');
 
 console.log("Arrancando bot...");
 
+console.log("🔥 ESTE ES EL ARCHIVO CORRECTO");
 // =====================
 // CLIENTE DISCORD
 // =====================
