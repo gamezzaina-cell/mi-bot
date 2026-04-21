@@ -141,54 +141,7 @@ V2:
 ☆ https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D3113771285%26source%3D115F17D04FF8CEF3&link=steam%3A%2F%2Frungameid%2F714010`);
 }
   
-const cron = require('node-cron');
 
-let lastMessageId = null;
-
-// ⏰ 16:30 (hora servidor)
-cron.schedule('30 16 * * *', async () => {
-
-  const guild = client.guilds.cache.first();
-  if (!guild) return;
-
-  const channel = guild.channels.cache.find(c =>
-    c.name.includes('check') || c.name.includes('general')
-  );
-
-  if (!channel) return;
-
-  const msg = await channel.send(`⸻ 🧠 RECORDATORIO RUTINAS ⸻
-
-➤ Haz tus 5 Deathmatchs mínimos hoy.
-➤ Sube captura en check.
-➤ Mantén constancia 🔥`);
-
-  lastMessageId = msg.id;
-});
-
-
-// 🗑️ BORRAR A LAS 17:30
-cron.schedule('30 17 * * *', async () => {
-
-  const guild = client.guilds.cache.first();
-  if (!guild) return;
-
-  const channel = guild.channels.cache.find(c =>
-    c.name.includes('check') || c.name.includes('general')
-  );
-
-  if (!channel || !lastMessageId) return;
-
-  try {
-    const msg = await channel.messages.fetch(lastMessageId);
-    await msg.delete();
-  } catch (err) {
-    console.log("Error borrando mensaje:", err.message);
-  }
-
-  lastMessageId = null;
-});
-  
 // =====================
 // LOGIN
 // =====================
