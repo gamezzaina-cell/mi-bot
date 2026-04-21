@@ -123,80 +123,58 @@ https://forms.gle/RDXhhJQXN2CR4S9K6
 
 ||@everyone||`);
   }
-
   // =====================
-  // !aimdone
+  // !rutina
   // =====================
-  if (message.content === '!aimdone') {
+ const cron = require('node-cron');
 
-    const roleName = "𝐀𝐫𝐠𝐞𝐚 𝐍𝐢𝐫𝐚";
-    const member = message.member;
+let lastMessageId = null;
 
-    if (!member) return;
+// ⏰ 16:30 hora de Madrid (CET/CEST)
+cron.schedule('30 16 * * *', async () => {
 
-    const hasRole = member.roles.cache.some(r => r.name === roleName);
+  const guild = client.guilds.cache.first();
+  if (!guild) return;
 
-    if (!hasRole) {
-      return message.channel.send("❌ Solo Argea Nira puede hacer la rutina.");
-    }
+  const channel = guild.channels.cache.find(c =>
+    c.name.includes('check') || c.name.includes('general')
+  );
 
-    const data = loadData();
-    const day = today();
+  if (!channel) return;
 
-    if (!data[day]) data[day] = [];
+  const msg = await channel.send(`⸻ 🧠 RECORDATORIO RUTINAS ⸻
 
-    if (!data[day].includes(message.author.id)) {
-      data[day].push(message.author.id);
-      saveData(data);
-    }
+➤ Recuerda hacer tus 5 Deathmatchs mínimos hoy.
+➤ Sube captura en el canal de check.
+➤ Si haces AimLab, también puedes reportarlo.
 
-    return message.channel.send("🎯 Good boy.");
+🔥 No olvides mantener tu constancia.`);
+
+  lastMessageId = msg.id;
+});
+
+
+// 🗑️ BORRAR 1 HORA DESPUÉS
+cron.schedule('30 17 * * *', async () => {
+
+  const guild = client.guilds.cache.first();
+  if (!guild) return;
+
+  const channel = guild.channels.cache.find(c =>
+    c.name.includes('check') || c.name.includes('general')
+  );
+
+  if (!channel || !lastMessageId) return;
+
+  try {
+    const msg = await channel.messages.fetch(lastMessageId);
+    await msg.delete();
+  } catch (err) {
+    console.log("No se pudo borrar el mensaje:", err.message);
   }
 
-  // =====================
-  // !aimcheck
-  // =====================
-if (message.content === '!aimcheck') {
-
-  const ARGEA_NIRA = [
-    "915959374076338256",
-    "591699665657921556",
-    "792964396291719189",
-    "527556698307821595",
-    "695732938033201232",
-    "1187412116454518784"
-  ];
-
-  const data = loadData();
-  const day = today();
-
-  const done = data[day] || [];
-
-  const guild = message.guild;
-
-  // 🔥 SOLO USAMOS IDS REALES DEL SERVER
-  const members = await guild.members.fetch();
-
-  const filtered = ARGEA_NIRA
-    .map(id => members.get(id))
-    .filter(m => m && !m.user.bot);
-
-  const doneMembers = filtered.filter(m => done.includes(m.id));
-  const missing = filtered.filter(m => !done.includes(m.id));
-
-  const listDone = doneMembers.map(m => `✅ ${m.user.tag}`).join('\n');
-  const listMissing = missing.map(m => `❌ ${m.user.tag}`).join('\n');
-
-  console.log("ARGEA LIST:", ARGEA_NIRA);
-
-  return message.channel.send(`# 📊 AIM PANEL (ARGEA NIRA)
-
-## ✅ Hecho:
-${listDone || "Nadie"}
-
-## ❌ Faltan:
-${listMissing || "Todos han cumplido 🎉"}`);
-}
+  lastMessageId = null;
+});
 // =====================
 // LOGIN
 // =====================
