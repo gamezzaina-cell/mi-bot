@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
-  "dependencies": {
+"dependencies": {
+  "node-cron": "^3.0.3"
+}
     "@discordjs/voice": "^0.19.2",
     "axios": "^1.15.1",
     "discord.js": "^14.26.3",
