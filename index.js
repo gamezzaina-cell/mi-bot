@@ -14,7 +14,10 @@ const client = new Client({
     GatewayIntentBits.GuildMembers,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent
-  ]
+  ],
+  allowedMentions: {
+    parse: ['everyone']
+  }
 });
 
 // =====================
@@ -132,7 +135,7 @@ if (message.content === '!rutina') {
     content: `# ⸻ Rutinas ⸻
 
 ➤ Todas las rutinas de AimLab se hacen y se envían al canal de check una captura del último ejercicio que habéis hecho (Deathmatchs). También podéis anotar avances.
-➤ Los Deathmatchs son 5 como mínimo cada día antes del entreno. Y se sube captura.
+➤ Los Deathmatchs son 5 como mínimo cada día antes del entreno.
 
 ⸺
 R1: https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D2850133972%26source%3D95BD504C2B51B9F4&link=steam%3A%2F%2Frungameid%2F714010
@@ -141,9 +144,7 @@ R2: https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D0%26so
 
 V2:
 ☆ https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D3113771495%26source%3D115F17D04FF8CEF3&link=steam%3A%2F%2Frungameid%2F714010
-☆ https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D3113771285%26source%3D115F17D04FF8CEF3&link=steam%3A%2F%2Frungameid%2F714010
-
-@everyone`
+☆ https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D3113771285%26source%3D115F17D04FF8CEF3&link=steam%3A%2F%2Frungameid%2F714010`
   });
 }
   
