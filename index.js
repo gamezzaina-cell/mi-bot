@@ -99,5 +99,34 @@ Compete, stand out, and get noticed.
   }
 });
 
+client.on('messageCreate', async message => {
+  if (message.author.bot) return;
+
+  if (message.content.startsWith('!player')) {
+
+    const args = message.content.split(' ');
+
+    const user = message.mentions.users.first();
+    const rango = args[2];
+    const rol = args[3];
+
+    if (!user || !rango || !rol) {
+      return message.channel.send("❌ Uso correcto: !player @usuario <rango> <rol>");
+    }
+
+    message.channel.send(`# 🎮 Nuevo jugador en las 10mans
+
+👤 **Jugador:** ${user}
+🏆 **Rango:** ${rango}
+🎯 **Rol:** ${rol}
+
+🔥 Este jugador está participando en nuestras 10mans para demostrar su nivel.
+
+💥 ¡Sigue la competición y descubre su talento!
+
+||@everyone||`);
+  }
+});
+
 // 🔐 LOGIN
 client.login(process.env.TOKEN);
