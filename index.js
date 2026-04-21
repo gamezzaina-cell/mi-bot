@@ -190,6 +190,40 @@ client.on('messageCreate', message => {
 ${list || "Todos han cumplido 🎉"}`);
   }
 });
+const cron = require('node-cron');
+cron.schedule('59 23 * * 1-5', () => {
+  const data = loadData();
+  const day = today();
+
+  const done = data[day] || [];
+
+  const guild = client.guilds.cache.first();
+
+  if (!guild) return;
+
+  const missing = guild.members.cache.filter(m =>
+    !m.user.bot && !done.includes(m.id)
+  );
+
+  if (missing.size === 0) {
+    return guild.channels.cache
+      .find(c => c.name.includes('general'))
+      ?.send("🎯 Todos han completado la rutina de aim hoy. GG!");
+  }
+
+  const mentions = missing.map(m => `<@${m.id}>`).join(' ');
+
+  const channel = guild.channels.cache.find(c =>
+    c.name.includes('general')
+  );
+
+  if (channel) {
+    channel.send(
+      `❌ **Faltas de aim hoy:**\n\n${mentions}\n\n⚠️ No completaron la rutina de hoy.`
+    );
+  }
+
+});
 
 // 🔐 LOGIN
 client.login(process.env.TOKEN);
