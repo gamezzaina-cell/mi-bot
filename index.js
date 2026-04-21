@@ -126,27 +126,26 @@ https://forms.gle/RDXhhJQXN2CR4S9K6
   // =====================
   // !rutina
   // =====================
-
-  if (message.content === '!rutina') {
+if (message.content === '!rutina') {
 
   return message.channel.send(`⸻ Rutinas ⸻
 ➤ Todas las rutinas de AimLab se hacen y se envían al canal de check una captura del último ejercicio que habéis hecho (Deathmatchs). También podéis anotar avances.
-➤ Los Deathmatchs son 5 como mínimo cada día antes del entreno. Y al igual se sube una captura en el que se pueda observar que lo hayáis hecho.
-Podéis escoger qué preferís hacer en esa semana e ir variando.
+➤ Los Deathmatchs son 5 como mínimo cada día antes del entreno. Y se sube captura.
 ⸺
 R1: https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D2850133972%26source%3D95BD504C2B51B9F4&link=steam%3A%2F%2Frungameid%2F714010
 
 R2: https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D0%26source%3D115F17D04FF8CEF3&link=steam%3A%2F%2Frungameid%2F714010
 
-Rutina V2: Consiste en una rutina que se divide en dos, las cuales hay que hacer ambas (duran 15 mins).
+V2:
 ☆ https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D3113771495%26source%3D115F17D04FF8CEF3&link=steam%3A%2F%2Frungameid%2F714010
 ☆ https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D3113771285%26source%3D115F17D04FF8CEF3&link=steam%3A%2F%2Frungameid%2F714010`);
 }
- const cron = require('node-cron');
+  
+const cron = require('node-cron');
 
 let lastMessageId = null;
 
-// ⏰ 16:30 hora de Madrid (CET/CEST)
+// ⏰ 16:30 (hora servidor)
 cron.schedule('30 16 * * *', async () => {
 
   const guild = client.guilds.cache.first();
@@ -160,17 +159,15 @@ cron.schedule('30 16 * * *', async () => {
 
   const msg = await channel.send(`⸻ 🧠 RECORDATORIO RUTINAS ⸻
 
-➤ Recuerda hacer tus 5 Deathmatchs mínimos hoy.
-➤ Sube captura en el canal de check.
-➤ Si haces AimLab, también puedes reportarlo.
-
-🔥 No olvides mantener tu constancia.`);
+➤ Haz tus 5 Deathmatchs mínimos hoy.
+➤ Sube captura en check.
+➤ Mantén constancia 🔥`);
 
   lastMessageId = msg.id;
 });
 
 
-// 🗑️ BORRAR 1 HORA DESPUÉS
+// 🗑️ BORRAR A LAS 17:30
 cron.schedule('30 17 * * *', async () => {
 
   const guild = client.guilds.cache.first();
@@ -186,11 +183,12 @@ cron.schedule('30 17 * * *', async () => {
     const msg = await channel.messages.fetch(lastMessageId);
     await msg.delete();
   } catch (err) {
-    console.log("No se pudo borrar el mensaje:", err.message);
+    console.log("Error borrando mensaje:", err.message);
   }
 
   lastMessageId = null;
 });
+  
 // =====================
 // LOGIN
 // =====================
