@@ -151,91 +151,22 @@ function saveData(data) {
 function today() {
   return new Date().toISOString().split('T')[0];
 }
-client.on('messageCreate', message => {
-  if (message.author.bot) return;
-
-  if (message.content === '!aimdone') {
-
-    const roleName = "Argea Nira";
-
-    const member = message.member;
-    if (!member) return;
-
-    const hasRole = member.roles.cache.some(r => r.name === roleName);
-
-    if (!hasRole) {
-      return message.channel.send("❌ No tienes el rol necesario para registrar aim.");
-    }
-
-    const data = loadData();
-    const day = today();
-
-    if (!data[day]) data[day] = [];
-
-    if (!data[day].includes(message.author.id)) {
-      data[day].push(message.author.id);
-      saveData(data);
-    }
-
-    message.channel.send("🎯 Aim registrado correctamente para Argea Nira.");
-  }
-});
-
-  if (message.content === '!aimcheck') {
-
-    const data = loadData();
-    const day = today();
-
-    const done = data[day] || [];
-
-    const missing = message.guild.members.cache.filter(m =>
-      !m.user.bot && !done.includes(m.id)
-    );
-
-    const list = missing.map(m => `❌ ${m.user.tag}`).join('\n');
-
-    message.channel.send(`# 📊 Aim diario
-
-✔ Hecho: ${done.length}
-❌ Faltan:
-
-${list || "Todos han cumplido 🎉"}`);
-  }
-});
 const cron = require('node-cron');
-cron.schedule('59 23 * * 1-5', () => {
-  const data = loadData();
-  const day = today();
+const fs = require('fs');
 
-  const done = data[day] || [];
+const DATA_FILE = './aimdata.json';
 
-  const guild = client.guilds.cache.first();
+function loadData() {
+  if (!fs.existsSync(DATA_FILE)) return {};
+  return JSON.parse(fs.readFileSync(DATA_FILE));
+}
 
-  if (!guild) return;
+function saveData(data) {
+  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+}
 
-  const missing = guild.members.cache.filter(m =>
-    !m.user.bot && !done.includes(m.id)
-  );
-
-  if (missing.size === 0) {
-    return guild.channels.cache
-      .find(c => c.name.includes('general'))
-      ?.send("🎯 Todos han completado la rutina de aim hoy. GG!");
-  }
-
-  const mentions = missing.map(m => `<@${m.id}>`).join(' ');
-
-  const channel = guild.channels.cache.find(c =>
-    c.name.includes('general')
-  );
-
-  if (channel) {
-    channel.send(
-      `❌ **Faltas de aim hoy:**\n\n${mentions}\n\n⚠️ No completaron la rutina de hoy.`
-    );
-  }
-
-});
-
+function today() {
+  return new Date().toISOString().split('T')[0];
+}
 // 🔐 LOGIN
 client.login(process.env.TOKEN);
