@@ -126,6 +126,22 @@ https://forms.gle/RDXhhJQXN2CR4S9K6
   // =====================
   // !rutina
   // =====================
+
+  if (message.content === '!rutina') {
+
+  return message.channel.send(`⸻ Rutinas ⸻
+➤ Todas las rutinas de AimLab se hacen y se envían al canal de check una captura del último ejercicio que habéis hecho (Deathmatchs). También podéis anotar avances.
+➤ Los Deathmatchs son 5 como mínimo cada día antes del entreno. Y al igual se sube una captura en el que se pueda observar que lo hayáis hecho.
+Podéis escoger qué preferís hacer en esa semana e ir variando.
+⸺
+R1: https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D2850133972%26source%3D95BD504C2B51B9F4&link=steam%3A%2F%2Frungameid%2F714010
+
+R2: https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D0%26source%3D115F17D04FF8CEF3&link=steam%3A%2F%2Frungameid%2F714010
+
+Rutina V2: Consiste en una rutina que se divide en dos, las cuales hay que hacer ambas (duran 15 mins).
+☆ https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D3113771495%26source%3D115F17D04FF8CEF3&link=steam%3A%2F%2Frungameid%2F714010
+☆ https://go.aimlab.gg/v1/redirects?link=aimlab%3A%2F%2Fworkshop%3Fid%3D3113771285%26source%3D115F17D04FF8CEF3&link=steam%3A%2F%2Frungameid%2F714010`);
+}
  const cron = require('node-cron');
 
 let lastMessageId = null;
