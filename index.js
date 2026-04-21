@@ -1,7 +1,5 @@
 require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
-const fs = require('fs');
-const cron = require('node-cron');
 
 console.log("Arrancando bot...");
 console.log("🔥 ESTE ES EL ARCHIVO CORRECTO");
@@ -41,29 +39,14 @@ client.on('guildMemberAdd', member => {
 });
 
 // =====================
-// ARCHIVO AIM
-// =====================
-const DATA_FILE = './aimdata.json';
-
-function loadData() {
-  if (!fs.existsSync(DATA_FILE)) return {};
-  return JSON.parse(fs.readFileSync(DATA_FILE));
-}
-
-function saveData(data) {
-  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
-}
-
-function today() {
-  return new Date().toISOString().split('T')[0];
-}
-
-// =====================
 // COMANDOS
 // =====================
 client.on('messageCreate', async message => {
   if (message.author.bot) return;
 
+  // ---------------------
+  // !post
+  // ---------------------
   if (message.content.startsWith('!post')) {
     const args = message.content.split(' ');
     const url = args[1];
@@ -73,6 +56,9 @@ client.on('messageCreate', async message => {
     return message.channel.send(`# 🚨 NUEVO POST || @everyone ||\n\n🔥 ${url}`);
   }
 
+  // ---------------------
+  // !info10m
+  // ---------------------
   if (message.content === '!info10m') {
     return message.channel.send(`# 🎯 10MANS VALORANT
 
@@ -83,6 +69,9 @@ https://forms.gle/RDXhhJQXN2CR4S9K6
 ||@everyone||`);
   }
 
+  // ---------------------
+  // !player
+  // ---------------------
   if (message.content.startsWith('!player')) {
 
     const user = message.mentions.users.first();
@@ -111,7 +100,7 @@ https://forms.gle/RDXhhJQXN2CR4S9K6
 ||@everyone||`);
   }
 
-}); // 👈 ESTE ERA EL QUE FALTABA
+});
 
 // =====================
 // LOGIN
