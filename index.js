@@ -135,5 +135,61 @@ client.on('messageCreate', async message => {
 ||@everyone||`);
 });
 
+const fs = require('fs');
+
+const DATA_FILE = './aimdata.json';
+
+function loadData() {
+  if (!fs.existsSync(DATA_FILE)) return {};
+  return JSON.parse(fs.readFileSync(DATA_FILE));
+}
+
+function saveData(data) {
+  fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+}
+
+function today() {
+  return new Date().toISOString().split('T')[0];
+}
+client.on('messageCreate', message => {
+  if (message.author.bot) return;
+
+  if (message.content === '!aimdone') {
+
+    const data = loadData();
+    const day = today();
+
+    if (!data[day]) data[day] = [];
+
+    if (!data[day].includes(message.author.id)) {
+      data[day].push(message.author.id);
+      saveData(data);
+    }
+
+    message.channel.send("🎯 Aim registrado para hoy. Buen trabajo!");
+  }
+
+  if (message.content === '!aimcheck') {
+
+    const data = loadData();
+    const day = today();
+
+    const done = data[day] || [];
+
+    const missing = message.guild.members.cache.filter(m =>
+      !m.user.bot && !done.includes(m.id)
+    );
+
+    const list = missing.map(m => `❌ ${m.user.tag}`).join('\n');
+
+    message.channel.send(`# 📊 Aim diario
+
+✔ Hecho: ${done.length}
+❌ Faltan:
+
+${list || "Todos han cumplido 🎉"}`);
+  }
+});
+
 // 🔐 LOGIN
 client.login(process.env.TOKEN);
