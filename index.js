@@ -244,6 +244,9 @@ ${listDone || "Nadie"}
 ## ❌ Faltan:
 ${listMissing || "Todos han cumplido 🎉"}`);
 }
+  console.log("ARGEA LIST:", ARGEA_NIRA);
+
+return message.channel.send("DEBUG: mira consola");
 // =====================
 // LOGIN
 // =====================
