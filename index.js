@@ -102,30 +102,37 @@ Compete, stand out, and get noticed.
 client.on('messageCreate', async message => {
   if (message.author.bot) return;
 
-  if (message.content.startsWith('!player')) {
+  if (!message.content.startsWith('!player')) return;
 
-    const user = message.mentions.users.first();
-    const args = message.content.split(' ');
+  const user = message.mentions.users.first();
+  if (!user) {
+    return message.channel.send("❌ Debes mencionar un usuario: !player @usuario rango rol");
+  }
 
-    const rango = args[2];
-    const rol = args[3];
+  // quitar el comando y la mención
+  const args = message.content
+    .replace('!player', '')
+    .replace(`<@${user.id}>`, '')
+    .replace(`<@!${user.id}>`, '')
+    .trim()
+    .split(' ');
 
-    if (!user || !rango || !rol) {
-      return message.channel.send("❌ Uso correcto: !player @usuario <rango> <rol>");
-    }
+  const rango = args[0];
+  const rol = args.slice(1).join(' ');
 
-    message.channel.send(`# 🎮 Nuevo jugador en las 10mans
+  if (!rango || !rol) {
+    return message.channel.send("❌ Uso: !player @usuario <rango> <rol>");
+  }
+
+  message.channel.send(`# 🎮 Nuevo jugador en las 10mans
 
 👤 **Jugador:** ${user}
 🏆 **Rango:** ${rango}
 🎯 **Rol:** ${rol}
 
-🔥 Este jugador está participando en nuestras 10mans para demostrar su nivel y buscar visibilidad en la organización.
-
-💥 ¡Sigue la competición y descubre talento!
+🔥 Participando en nuestras 10mans para demostrar su nivel.
 
 ||@everyone||`);
-  }
 });
 
 // 🔐 LOGIN
