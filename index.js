@@ -104,9 +104,9 @@ client.on('messageCreate', async message => {
 
   if (message.content.startsWith('!player')) {
 
+    const user = message.mentions.users.first();
     const args = message.content.split(' ');
 
-    const user = message.mentions.users.first();
     const rango = args[2];
     const rol = args[3];
 
@@ -120,9 +120,9 @@ client.on('messageCreate', async message => {
 🏆 **Rango:** ${rango}
 🎯 **Rol:** ${rol}
 
-🔥 Este jugador está participando en nuestras 10mans para demostrar su nivel.
+🔥 Este jugador está participando en nuestras 10mans para demostrar su nivel y buscar visibilidad en la organización.
 
-💥 ¡Sigue la competición y descubre su talento!
+💥 ¡Sigue la competición y descubre talento!
 
 ||@everyone||`);
   }
