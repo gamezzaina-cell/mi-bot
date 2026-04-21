@@ -156,6 +156,17 @@ client.on('messageCreate', message => {
 
   if (message.content === '!aimdone') {
 
+    const roleName = "Argea Nira";
+
+    const member = message.member;
+    if (!member) return;
+
+    const hasRole = member.roles.cache.some(r => r.name === roleName);
+
+    if (!hasRole) {
+      return message.channel.send("❌ No tienes el rol necesario para registrar aim.");
+    }
+
     const data = loadData();
     const day = today();
 
@@ -166,8 +177,9 @@ client.on('messageCreate', message => {
       saveData(data);
     }
 
-    message.channel.send("🎯 Aim registrado para hoy. Buen trabajo!");
+    message.channel.send("🎯 Aim registrado correctamente para Argea Nira.");
   }
+});
 
   if (message.content === '!aimcheck') {
 
