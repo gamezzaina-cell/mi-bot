@@ -156,42 +156,59 @@ https://forms.gle/RDXhhJQXN2CR4S9K6
   // =====================
   // !aimcheck
   // =====================
-  if (message.content === '!aimcheck') {
+ // =====================
+// AIM CHECK (POR IDS)
+// =====================
+if (message.content === '!aimcheck') {
 
-    const roleName = "𝐀𝐫𝐠𝐞𝐚 𝐍𝐢𝐫𝐚";
+  const ARGEA_NIRA = [
+    "915959374076338256",
+    "591699665657921556",
+    "792964396291719189",
+    "527556698307821595",
+    "695732938033201232",
+    "1187412116454518784"
+  ];
 
-    const data = loadData();
-    const day = today();
+  const data = loadData();
+  const day = today();
 
-    const done = data[day] || [];
+  const done = data[day] || [];
 
-    const members = await message.guild.members.fetch();
+  const members = await message.guild.members.fetch();
 
-    const filtered = members.filter(m =>
-      !m.user.bot &&
-      m.roles.cache.some(r => r.name === roleName)
-    );
+  const filtered = members.filter(m =>
+    !m.user.bot && ARGEA_NIRA.includes(m.id)
+  );
 
-    const doneMembers = filtered.filter(m => done.includes(m.id));
-    const missing = filtered.filter(m => !done.includes(m.id));
+  const doneMembers = filtered.filter(m => done.includes(m.id));
+  const missing = filtered.filter(m => !done.includes(m.id));
 
-    const listDone = doneMembers.map(m => `✅ ${m.user.tag}`).join('\n');
-    const listMissing = missing.map(m => `❌ ${m.user.tag}`).join('\n');
+  const listDone = doneMembers.map(m => `✅ ${m.user.tag}`).join('\n');
+  const listMissing = missing.map(m => `❌ ${m.user.tag}`).join('\n');
 
-    return message.channel.send(`# 📊 AIM PANEL
+  return message.channel.send(`# 📊 AIM PANEL (ARGEA NIRA)
 
 ## ✅ Hecho:
 ${listDone || "Nadie"}
 
 ## ❌ Faltan:
 ${listMissing || "Todos han cumplido 🎉"}`);
-  }
-});
+}
 
 // =====================
-// CRON 23:59 L-V
+// CRON 23:59 L-V (POR IDS)
 // =====================
 cron.schedule('59 23 * * 1-5', async () => {
+
+  const ARGEA_NIRA = [
+    "915959374076338256",
+    "591699665657921556",
+    "792964396291719189",
+    "527556698307821595",
+    "695732938033201232",
+    "1187412116454518784"
+  ];
 
   const data = loadData();
   const day = today();
@@ -199,13 +216,10 @@ cron.schedule('59 23 * * 1-5', async () => {
   const guild = client.guilds.cache.first();
   if (!guild) return;
 
-  const roleName = "𝐀𝐫𝐠𝐞𝐚 𝐍𝐢𝐫𝐚";
-
   const members = await guild.members.fetch();
 
   const filtered = members.filter(m =>
-    !m.user.bot &&
-    m.roles.cache.some(r => r.name === roleName)
+    !m.user.bot && ARGEA_NIRA.includes(m.id)
   );
 
   const done = data[day] || [];
@@ -219,12 +233,11 @@ cron.schedule('59 23 * * 1-5', async () => {
 
   const mentions = missing.map(m => `<@${m.id}>`).join(' ');
 
-  channel.send(`# ⏰ REVISIÓN DIARIA
+  channel.send(`# ⏰ REVISIÓN DIARIA AIM
 
 ❌ Faltas:
 ${mentions || "Nadie 🎉"}`);
 });
-
 // =====================
 // LOGIN
 // =====================
