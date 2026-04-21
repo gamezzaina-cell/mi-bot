@@ -110,7 +110,7 @@ Compete, stand out, and get noticed.
       return message.channel.send("❌ Uso: !player @usuario <rango> <rol>");
     }
 
-    return message.channel.send(`# 🎮 NUEVO PLAYER
+    return message.channel.send(`# 🎮 NUEVO PLAYER CONFIRMADO PARA LAS 1OMANS
 
 👤 ${user}
 🏆 Rango: ${rango}
