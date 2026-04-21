@@ -215,12 +215,20 @@ if (message.content === '!aimcheck') {
 
   const done = data[day] || [];
 
-  // 🔥 SOLO usuarios de tu lista (NO del servidor entero)
-  const members = await message.guild.members.fetch();
+  const guild = message.guild;
 
-  const filtered = ARGEA_NIRA
-    .map(id => members.get(id))
-    .filter(m => m && !m.user.bot);
+  // 🔥 SOLO USAMOS TU LISTA
+  const resolved = await Promise.all(
+    ARGEA_NIRA.map(async (id) => {
+      try {
+        return await guild.members.fetch(id);
+      } catch {
+        return null;
+      }
+    })
+  );
+
+  const filtered = resolved.filter(m => m && !m.user.bot);
 
   const doneMembers = filtered.filter(m => done.includes(m.id));
   const missing = filtered.filter(m => !done.includes(m.id));
