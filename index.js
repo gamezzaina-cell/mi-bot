@@ -4,8 +4,8 @@ const fs = require('fs');
 const cron = require('node-cron');
 
 console.log("Arrancando bot...");
-
 console.log("🔥 ESTE ES EL ARCHIVO CORRECTO");
+
 // =====================
 // CLIENTE DISCORD
 // =====================
@@ -64,27 +64,15 @@ function today() {
 client.on('messageCreate', async message => {
   if (message.author.bot) return;
 
-  // =====================
-  // !post
-  // =====================
   if (message.content.startsWith('!post')) {
     const args = message.content.split(' ');
     const url = args[1];
-
     if (!url) return;
 
-    if (message.deletable) {
-      try {
-        await message.delete();
-      } catch {}
-    }
-
+    if (message.deletable) await message.delete().catch(() => {});
     return message.channel.send(`# 🚨 NUEVO POST || @everyone ||\n\n🔥 ${url}`);
   }
 
-  // =====================
-  // !info10m
-  // =====================
   if (message.content === '!info10m') {
     return message.channel.send(`# 🎯 10MANS VALORANT
 
@@ -95,15 +83,10 @@ https://forms.gle/RDXhhJQXN2CR4S9K6
 ||@everyone||`);
   }
 
-  // =====================
-  // !player
-  // =====================
   if (message.content.startsWith('!player')) {
 
     const user = message.mentions.users.first();
-    if (!user) {
-      return message.channel.send("❌ Usa: !player @usuario rango rol");
-    }
+    if (!user) return message.channel.send("❌ Usa: !player @usuario rango rol");
 
     const args = message.content
       .replace('!player', '')
@@ -128,6 +111,7 @@ https://forms.gle/RDXhhJQXN2CR4S9K6
 ||@everyone||`);
   }
 
+}); // 👈 ESTE ERA EL QUE FALTABA
 
 // =====================
 // LOGIN
