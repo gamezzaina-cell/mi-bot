@@ -199,7 +199,7 @@ ${listMissing || "Todos han cumplido 🎉"}`);
 // =====================
 // CRON 23:59 L-V (POR IDS)
 // =====================
-cron.schedule('59 23 * * 1-5', async () => {
+if (message.content === '!aimcheck') {
 
   const ARGEA_NIRA = [
     "915959374076338256",
@@ -213,31 +213,29 @@ cron.schedule('59 23 * * 1-5', async () => {
   const data = loadData();
   const day = today();
 
-  const guild = client.guilds.cache.first();
-  if (!guild) return;
-
-  const members = await guild.members.fetch();
-
-  const filtered = members.filter(m =>
-    !m.user.bot && ARGEA_NIRA.includes(m.id)
-  );
-
   const done = data[day] || [];
+
+  // 🔥 SOLO usuarios de tu lista (NO del servidor entero)
+  const members = await message.guild.members.fetch();
+
+  const filtered = ARGEA_NIRA
+    .map(id => members.get(id))
+    .filter(m => m && !m.user.bot);
+
+  const doneMembers = filtered.filter(m => done.includes(m.id));
   const missing = filtered.filter(m => !done.includes(m.id));
 
-  const channel = guild.channels.cache.find(c =>
-    c.name.includes('general')
-  );
+  const listDone = doneMembers.map(m => `✅ ${m.user.tag}`).join('\n');
+  const listMissing = missing.map(m => `❌ ${m.user.tag}`).join('\n');
 
-  if (!channel) return;
+  return message.channel.send(`# 📊 AIM PANEL (ARGEA NIRA)
 
-  const mentions = missing.map(m => `<@${m.id}>`).join(' ');
+## ✅ Hecho:
+${listDone || "Nadie"}
 
-  channel.send(`# ⏰ REVISIÓN DIARIA AIM
-
-❌ Faltas:
-${mentions || "Nadie 🎉"}`);
-});
+## ❌ Faltan:
+${listMissing || "Todos han cumplido 🎉"}`);
+}
 // =====================
 // LOGIN
 // =====================
