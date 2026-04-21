@@ -61,7 +61,7 @@ client.on('messageCreate', async message => {
   // ---------------------
  if (message.content === '!info10m') {
   return message.channel.send(`# **¿Quieres darte a conocer en Valorant? :dart: **
-**Únete a nuestras 10mans y demuestra de lo que eres capaz.
+** Únete a nuestras 10mans y demuestra de lo que eres capaz.
 
 ¿Eres un equipo en busca de jugadores? Observa talento en acción y encuentra a tu próximo fichaje.
 ¿Eres jugador y buscas equipo? Este es tu momento para brillar y mostrar tu nivel.
@@ -74,7 +74,7 @@ Compite, destaca y haz que te vean.
 
 # **Do you want to make a name for yourself in Valorant? :dart: **
 
-**Join our 10mans and prove what you're capable of.
+** Join our 10mans and prove what you're capable of.
 
 Are you a team looking for players? Watch talent in action and find your next recruit.
 Are you a player looking for a team? This is your moment to shine and showcase your level.
@@ -83,7 +83,7 @@ Compete, stand out, and get noticed.
 
 :point_right: Join now and start playing with the best.
 
-:point_right: https://forms.gle/RDXhhJQXN2CR4S9K6**
+:point_right: https://forms.gle/RDXhhJQXN2CR4S9K6 **
 
 ||@everyone||`);
 }
