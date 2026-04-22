@@ -40,7 +40,7 @@ client.on('guildMemberAdd', member => {
   };
 
   canal.send({
-    content: `👋 Bienvenido al servidor de argea <@${member.user.id}>` 💚 ,
+content: `👋 Bienvenido al servidor de argea <@${member.user.id}> 💚`,
     embeds: [embed]
   });
 });
