@@ -33,8 +33,15 @@ client.on('guildMemberAdd', member => {
   const canal = member.guild.channels.cache.get("1467611664148074498");
   if (!canal) return;
 
+  const embed = {
+    color: 0x2ecc71,
+    title: "🎉 New member",
+    description: "We hope you enjoy the server 💚"
+  };
+
   canal.send({
-    content: `👋 Bienvenid@ al servidor de Argea <@${member.user.id}> 💚`,
+    content: `Bienvenido al servidor de argea <@${member.user.id}>`,
+    embeds: [embed]
   });
 });
 
