@@ -123,7 +123,7 @@ Compete, stand out, and get noticed.
 🏆 Rango: ${rango}
 🎯 Rol: ${rol}
 
-||@everyone||`);
+||@here||`);
   }
 
 });
