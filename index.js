@@ -68,13 +68,8 @@ client.on('messageCreate', async message => {
   if (command === '!twitch') {
     if (!url) return;
 
-    if (message.deletable) {
-      await message.delete().catch(() => {});
-    }
-
-    return message.channel.send(
-      `# 🔴 ¡YA EN DIRECTO! || @everyone ||\n\n🎮 Pásate por el stream:\n👉 ${url}\n\n💜 ¡No te lo pierdas!`
-    );
+    if (message.deletable) await message.delete().catch(() => {});
+    return message.channel.send(`# 🔴 ¡YA EN DIRECTO! || @everyone ||\n\n🎮 Pásate por el stream:\n👉 ${url}\n\n💜 ¡No te lo pierdas!`);
   }
 
   // ---------------------
@@ -83,13 +78,8 @@ client.on('messageCreate', async message => {
   if (command === '!twitchsp') {
     if (!url) return;
 
-    if (message.deletable) {
-      await message.delete().catch(() => {});
-    }
-
-    return message.channel.send(
-      `# 🔴 ¡Spike Series está en directo! || @everyone ||\n\n🎮 Pásate por el stream:\n👉 ${url}\n\n💜 ¡No te lo pierdas!`
-    );
+    if (message.deletable) await message.delete().catch(() => {});
+    return message.channel.send(`# 🔴 ¡Spike Series está en directo! || @everyone ||\n\n🎮 Pásate por el stream:\n👉 ${url}\n\n💜 ¡No te lo pierdas!`);
   }
 });
   // ---------------------
