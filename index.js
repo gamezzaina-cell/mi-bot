@@ -36,11 +36,13 @@ client.on('guildMemberAdd', member => {
   const embed = {
     color: 0x2ecc71,
     title: "🎉 New member",
-    description: "We hope you enjoy the server 💚"
+    description: `👋 Bienvenido al servidor de argea <@${member.user.id}> 💚`,
+    image: {
+      url: "https://media.discordapp.net/attachments/1465118735999434886/1499077960869871767/Bienvenida.jpeg"
+    }
   };
 
   canal.send({
-content: `👋 Bienvenido al servidor de argea <@${member.user.id}> 💚`,
     embeds: [embed]
   });
 });
