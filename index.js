@@ -184,7 +184,7 @@ client.once("ready", async () => {
   // Equipo 1 A
   // =====================
   await enviarEmbed(
-    "ID_CANAL_1",
+    "1500182661791092886",
     "EQUIPO 1 A",
     [
       { id: "1189508170448650261", rol: "Dualista" },
