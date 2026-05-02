@@ -153,7 +153,7 @@ Compete, stand out, and get noticed.
 
 });
 
-const client = new Client({
+
   intents: [GatewayIntentBits.Guilds]
 });
 
