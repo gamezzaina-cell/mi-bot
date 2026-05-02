@@ -49,7 +49,7 @@ client.once('clientReady', async () => {
     "1500231869663547513",
     "EQUIPO 1 B",
     [
-      { id: "713536606757191761", rol: "Dualista" },
+      { id: "Por confirmar", rol: "Dualista" },
       { id: "382631918098710539", rol: "Iniciador" },
       { id: "1168645060418605120", rol: "Smoker" },
       { id: "1124143141067431985", rol: "Centinela" },
