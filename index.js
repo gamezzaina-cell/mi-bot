@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 
 console.log("Arrancando bot...");
 console.log("🔥 ESTE ES EL ARCHIVO CORRECTO");
@@ -42,9 +42,7 @@ client.on('guildMemberAdd', member => {
     }
   };
 
-  canal.send({
-    embeds: [embed]
-  });
+  canal.send({ embeds: [embed] });
 });
 
 // =====================
@@ -64,7 +62,8 @@ client.on('messageCreate', async message => {
     if (message.deletable) await message.delete().catch(() => {});
     return message.channel.send(`# 🚨 NUEVO POST || @everyone ||\n\n🔥 ${url}`);
   }
-   // ---------------------
+
+  // ---------------------
   // !twitch
   // ---------------------
   if (message.content.startsWith('!twitch ')) {
@@ -91,8 +90,9 @@ client.on('messageCreate', async message => {
   // ---------------------
   // !info10m
   // ---------------------
- if (message.content === '!info10m') {
-  return message.channel.send(`# **¿Quieres darte a conocer en Valorant? :dart: **
+  if (message.content === '!info10m') {
+    return message.channel.send(`# **¿Quieres darte a conocer en Valorant? :dart: **
+
 ** Únete a nuestras 10mans y demuestra de lo que eres capaz.
 
 ¿Eres un equipo en busca de jugadores? Observa talento en acción y encuentra a tu próximo fichaje.
@@ -118,13 +118,12 @@ Compete, stand out, and get noticed.
 :point_right: https://forms.gle/RDXhhJQXN2CR4S9K6 **
 
 ||@everyone||`);
-}
+  }
 
   // ---------------------
   // !player
   // ---------------------
   if (message.content.startsWith('!player')) {
-
     const user = message.mentions.users.first();
     if (!user) return message.channel.send("❌ Usa: !player @usuario rango rol");
 
@@ -150,14 +149,11 @@ Compete, stand out, and get noticed.
 
 ||@here||`);
   }
-
 });
 
-
-  intents: [GatewayIntentBits.Guilds]
-});
-
-// Función para enviar un embed a un canal
+// =====================
+// FUNCION PARA ENVIAR EMBED
+// =====================
 async function enviarEmbed(canalId, nombreEquipo, jugadores, igl) {
   const canal = await client.channels.fetch(canalId);
 
@@ -177,6 +173,9 @@ ${lista}
   await canal.send({ embeds: [embed] });
 }
 
+// =====================
+// ENVIAR LOS EQUIPOS AL INICIAR
+// =====================
 client.once("ready", async () => {
   console.log("Bot listo");
 
@@ -252,34 +251,4 @@ client.once("ready", async () => {
     "EQUIPO 3 A",
     [
       { id: "668504038538739722", rol: "Dualista" },
-      { id: "1158332802392137728", rol: "Iniciador" },
-      { id: "495914152968060938", rol: "Smoker" },
-      { id: "836629418838589520", rol: "Centinela" },
-      { id: "444239353045057536", rol: "Flex" },
-    ],
-    "<@444239353045057536>"
-  );
-
-  // =====================
-  // Equipo 3 B
-  // =====================
-  await enviarEmbed(
-    "ID_CANAL_6",
-    "EQUIPO 3 B",
-    [
-      { id: "1054461661945274398", rol: "Dualista" },
-      { id: "1380971709716369441", rol: "Iniciador" },
-      { id: "1427739343254192272", rol: "Smoker" },
-      { id: "828314118381502494", rol: "Centinela" },
-      { id: "810516417111261185", rol: "Flex" },
-    ],
-    "Por confirmar"
-  );
-});
-
-client.login(process.env.TOKEN);
-// =====================
-// LOGIN
-// =====================
-console.log("TOKEN:", process.env.TOKEN);
-client.login(process.env.TOKEN);
+      { id: "1158332802392137728", rol: "Inici
