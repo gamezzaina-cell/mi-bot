@@ -22,7 +22,7 @@ const client = new Client({
 // =====================
 // READY
 // =====================
-client.once('ready', async () => {
+client.once('clientReady', async () => {
   console.log("🤖 Bot conectado");
   console.log("Bot listo");
 
@@ -85,7 +85,7 @@ client.once('ready', async () => {
       { id: "880432639188803644", rol: "Iniciador" },
       { id: "969903596097376256", rol: "Smoker" },
       { id: "897210517494566942", rol: "Centinela" },
-      { id: "430131902238818304", rol: "Flex" },
+      { id: "Por confirmar", rol: "Flex" },
     ],
     "<@430131902238818304>"
   );
