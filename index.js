@@ -152,7 +152,6 @@ Compete, stand out, and get noticed.
   }
 
 });
-const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
 
 const client = new Client({
   intents: [GatewayIntentBits.Guilds]
