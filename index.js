@@ -152,7 +152,168 @@ Compete, stand out, and get noticed.
   }
 
 });
+// =====================
+// Equipo 1 A
+// =====================
+const { EmbedBuilder } = require("1500182661791092886");
 
+const jugadores = [
+  { id: "1189508170448650261", rol: "Dualista" },
+  { id: "578651526072107019", rol: "Iniciador" },
+  { id: "556805672361132042", rol: "Smoker" },
+  { id: "700743394007187496", rol: "Centinela" },
+  { id: "998634496150749225", rol: "Flex" },
+];
+
+const lista = jugadores
+  .map(j => `<@${j.id}>        ${j.rol}`)
+  .join("\n");
+
+const embed = new EmbedBuilder()
+  .setTitle("🔵 EQUIPO 1 A")
+  .setDescription(`
+${lista}
+
+👑 **IGL del equipo:** <@998634496150749225>  
+🗺️ **Mapa a jugar:** Por selecionar
+`);
+
+channel.send({ embeds: [embed] });
+// =====================
+// Equipo 1 B
+// =====================
+const { EmbedBuilder } = require("discord.js");
+
+const jugadores = [
+  { id: "713536606757191761", rol: "Dualista" },
+  { id: "382631918098710539", rol: "Iniciador" },
+  { id: "1168645060418605120", rol: "Smoker" },
+  { id: "1124143141067431985", rol: "Centinela" },
+  { id: "por confirmar", rol: "Flex" },
+];
+
+const lista = jugadores
+  .map(j => `<@${j.id}>        ${j.rol}`)
+  .join("\n");
+
+const embed = new EmbedBuilder()
+  .setTitle("🔵 EQUIPO 1 A")
+  .setDescription(`
+${lista}
+
+👑 **IGL del equipo:** <@382631918098710539>  
+🗺️ **Mapa a jugar:** Por selecionar
+`);
+
+channel.send({ embeds: [embed] });
+// =====================
+// Equipo 2 A
+// =====================
+const { EmbedBuilder } = require("discord.js");
+
+const jugadores = [
+  { id: "614834472000552989", rol: "Dualista" },
+  { id: "967085306207670304", rol: "Iniciador" },
+  { id: "1068593618660622498", rol: "Smoker" },
+  { id: "648151230169743384", rol: "Centinela" },
+  { id: "688703812856184897", rol: "Flex" },
+];
+
+const lista = jugadores
+  .map(j => `<@${j.id}>        ${j.rol}`)
+  .join("\n");
+
+const embed = new EmbedBuilder()
+  .setTitle("🔵 EQUIPO 1 A")
+  .setDescription(`
+${lista}
+
+👑 **IGL del equipo:** Por confirmar  
+🗺️ **Mapa a jugar:** Por selecionar
+`);
+
+channel.send({ embeds: [embed] });
+// =====================
+// Equipo 2 B
+// =====================
+const { EmbedBuilder } = require("discord.js");
+
+const jugadores = [
+  { id: "1235271564639997956", rol: "Dualista" },
+  { id: "880432639188803644", rol: "Iniciador" },
+  { id: "969903596097376256", rol: "Smoker" },
+  { id: "897210517494566942", rol: "Centinela" },
+  { id: "430131902238818304", rol: "Flex" },
+];
+
+const lista = jugadores
+  .map(j => `<@${j.id}>        ${j.rol}`)
+  .join("\n");
+
+const embed = new EmbedBuilder()
+  .setTitle("🔵 EQUIPO 1 A")
+  .setDescription(`
+${lista}
+
+👑 **IGL del equipo:** <@430131902238818304>  
+🗺️ **Mapa a jugar:** Por selecionar
+`);
+
+channel.send({ embeds: [embed] });
+// =====================
+// Equipo 3 A
+// =====================
+const { EmbedBuilder } = require("discord.js");
+
+const jugadores = [
+  { id: "668504038538739722", rol: "Dualista" },
+  { id: "1158332802392137728", rol: "Iniciador" },
+  { id: "495914152968060938", rol: "Smoker" },
+  { id: "836629418838589520", rol: "Centinela" },
+  { id: "444239353045057536", rol: "Flex" },
+];
+
+const lista = jugadores
+  .map(j => `<@${j.id}>        ${j.rol}`)
+  .join("\n");
+
+const embed = new EmbedBuilder()
+  .setTitle("🔵 EQUIPO 1 A")
+  .setDescription(`
+${lista}
+
+👑 **IGL del equipo:** <@444239353045057536>  
+🗺️ **Mapa a jugar:** Por selecionar
+`);
+
+channel.send({ embeds: [embed] });
+// =====================
+// Equipo 3 B
+// =====================
+const { EmbedBuilder } = require("discord.js");
+
+const jugadores = [
+  { id: "1054461661945274398", rol: "Dualista" },
+  { id: "1380971709716369441", rol: "Iniciador" },
+  { id: "1427739343254192272", rol: "Smoker" },
+  { id: "828314118381502494", rol: "Centinela" },
+  { id: "810516417111261185", rol: "Flex" },
+];
+
+const lista = jugadores
+  .map(j => `<@${j.id}>        ${j.rol}`)
+  .join("\n");
+
+const embed = new EmbedBuilder()
+  .setTitle("🔵 EQUIPO 1 A")
+  .setDescription(`
+${lista}
+
+👑 **IGL del equipo:** Por confirmar 
+🗺️ **Mapa a jugar:** Por selecionar
+`);
+
+channel.send({ embeds: [embed] });
 // =====================
 // LOGIN
 // =====================
