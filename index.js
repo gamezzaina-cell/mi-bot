@@ -155,7 +155,7 @@ Compete, stand out, and get noticed.
 // =====================
 // Equipo 1 A
 // =====================
-const { EmbedBuilder } = require("1500182661791092886");
+const { EmbedBuilder } = require("discord.js");
 
 const jugadores = [
   { id: "1189508170448650261", rol: "Dualista" },
@@ -182,7 +182,9 @@ channel.send({ embeds: [embed] });
 // =====================
 // Equipo 1 B
 // =====================
-const { EmbedBuilder } = require("discord.js");
+const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
+
+const canal1 = await client.channels.fetch("ID_CANAL_1");
 
 const jugadores = [
   { id: "713536606757191761", rol: "Dualista" },
@@ -197,7 +199,7 @@ const lista = jugadores
   .join("\n");
 
 const embed = new EmbedBuilder()
-  .setTitle("🔵 EQUIPO 1 A")
+  .setTitle("🔵 EQUIPO 1 B")
   .setDescription(`
 ${lista}
 
@@ -209,7 +211,7 @@ channel.send({ embeds: [embed] });
 // =====================
 // Equipo 2 A
 // =====================
-const { EmbedBuilder } = require("discord.js");
+const canal1 = await client.channels.fetch("ID_CANAL_1");
 
 const jugadores = [
   { id: "614834472000552989", rol: "Dualista" },
@@ -224,7 +226,7 @@ const lista = jugadores
   .join("\n");
 
 const embed = new EmbedBuilder()
-  .setTitle("🔵 EQUIPO 1 A")
+  .setTitle("🔵 EQUIPO 2 A")
   .setDescription(`
 ${lista}
 
@@ -236,7 +238,7 @@ channel.send({ embeds: [embed] });
 // =====================
 // Equipo 2 B
 // =====================
-const { EmbedBuilder } = require("discord.js");
+const canal1 = await client.channels.fetch("ID_CANAL_1");
 
 const jugadores = [
   { id: "1235271564639997956", rol: "Dualista" },
@@ -251,7 +253,7 @@ const lista = jugadores
   .join("\n");
 
 const embed = new EmbedBuilder()
-  .setTitle("🔵 EQUIPO 1 A")
+  .setTitle("🔵 EQUIPO 2 B")
   .setDescription(`
 ${lista}
 
@@ -263,7 +265,7 @@ channel.send({ embeds: [embed] });
 // =====================
 // Equipo 3 A
 // =====================
-const { EmbedBuilder } = require("discord.js");
+const canal1 = await client.channels.fetch("ID_CANAL_1");
 
 const jugadores = [
   { id: "668504038538739722", rol: "Dualista" },
@@ -278,7 +280,7 @@ const lista = jugadores
   .join("\n");
 
 const embed = new EmbedBuilder()
-  .setTitle("🔵 EQUIPO 1 A")
+  .setTitle("🔵 EQUIPO 3 A")
   .setDescription(`
 ${lista}
 
@@ -290,7 +292,7 @@ channel.send({ embeds: [embed] });
 // =====================
 // Equipo 3 B
 // =====================
-const { EmbedBuilder } = require("discord.js");
+const canal1 = await client.channels.fetch("ID_CANAL_1");
 
 const jugadores = [
   { id: "1054461661945274398", rol: "Dualista" },
@@ -305,7 +307,7 @@ const lista = jugadores
   .join("\n");
 
 const embed = new EmbedBuilder()
-  .setTitle("🔵 EQUIPO 1 A")
+  .setTitle("🔵 EQUIPO 3 B")
   .setDescription(`
 ${lista}
 
