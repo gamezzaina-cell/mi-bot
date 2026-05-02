@@ -156,4 +156,5 @@ Compete, stand out, and get noticed.
 // =====================
 // LOGIN
 // =====================
+console.log("TOKEN:", process.env.TOKEN);
 client.login(process.env.TOKEN);
