@@ -183,7 +183,7 @@ client.once("ready", async () => {
   // Equipo 1 A
   // =====================
   await enviarEmbed(
-    "1500182661791092886",
+    "1500182678828355817",
     "EQUIPO 1 A",
     [
       { id: "1189508170448650261", rol: "Dualista" },
@@ -199,7 +199,7 @@ client.once("ready", async () => {
   // Equipo 1 B
   // =====================
   await enviarEmbed(
-    "ID_CANAL_2",
+    "1500231869663547513",
     "EQUIPO 1 B",
     [
       { id: "713536606757191761", rol: "Dualista" },
@@ -215,7 +215,7 @@ client.once("ready", async () => {
   // Equipo 2 A
   // =====================
   await enviarEmbed(
-    "ID_CANAL_3",
+    "1500182692749115392",
     "EQUIPO 2 A",
     [
       { id: "614834472000552989", rol: "Dualista" },
@@ -231,7 +231,7 @@ client.once("ready", async () => {
   // Equipo 2 B
   // =====================
   await enviarEmbed(
-    "ID_CANAL_4",
+    "1500182706858754148",
     "EQUIPO 2 B",
     [
       { id: "1235271564639997956", rol: "Dualista" },
@@ -244,13 +244,10 @@ client.once("ready", async () => {
   );
 
   // =====================
-  // Equipo 3 A
-  // =====================
-  // =====================
 // Equipo 3 A
 // =====================
 await enviarEmbed(
-  "ID_CANAL_5",
+  "1500231605019480116",
   "EQUIPO 3 A",
   [
     { id: "668504038538739722", rol: "Dualista" },
@@ -262,6 +259,22 @@ await enviarEmbed(
   "Por confirmar"
 ); 
 });
+
+// =====================
+// Equipo 3 B
+// =====================
+await enviarEmbed(
+  "1500231656232063006",
+  "EQUIPO 3 B",
+  [
+    { id: "1054461661945274398", rol: "Dualista" },
+    { id: "1380971709716369441", rol: "Iniciador" },
+    { id: "1427739343254192272", rol: "Smoker" },
+    { id: "828314118381502494", rol: "Centinela" },
+    { id: "810516417111261185", rol: "Flex" },
+  ],
+  "Por confirmar"
+);
 
 client.login(process.env.TOKEN);
 // =====================
