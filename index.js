@@ -84,10 +84,10 @@ client.once('clientReady', async () => {
       { id: "1235271564639997956", rol: "Dualista" },
       { id: "880432639188803644", rol: "Iniciador" },
       { id: "969903596097376256", rol: "Smoker" },
-      { id: "897210517494566942", rol: "Centinela" },
+      { id: "Por confirmar", rol: "Centinela" },
       { id: "Por confirmar", rol: "Flex" },
     ],
-    "<@430131902238818304>"
+    "<@Por confirmar>"
   );
 
   // =====================
@@ -98,7 +98,7 @@ client.once('clientReady', async () => {
     "EQUIPO 3 A",
     [
       { id: "668504038538739722", rol: "Dualista" },
-      { id: "1158332802392137728", rol: "Iniciador" },
+      { id: "Por confirmar", rol: "Iniciador" },
       { id: "495914152968060938", rol: "Smoker" },
       { id: "836629418838589520", rol: "Centinela" },
       { id: "444239353045057536", rol: "Flex" },
