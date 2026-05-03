@@ -139,7 +139,7 @@ await enviarEmbed(
     { id: "828314118381502494", rol: "Centinela" },
     { id: "810516417111261185", rol: "Flex" },
   ],
-  "1380971709716369441",
+  "<@1380971709716369441>",
   "Sabado 9 Mayo",
   "19:00 Primera partida 20:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
@@ -265,11 +265,16 @@ Compete, stand out, and get noticed.
 // =====================
 // FUNCION PARA ENVIAR EMBED
 // =====================
-async function enviarEmbed(canalId, nombreEquipo, jugadores, igl) {
+async function enviarEmbed(canalId, nombreEquipo, jugadores, igl, dia, hora, url, mapa) {
   const canal = await client.channels.fetch(canalId);
 
   const lista = jugadores
-    .map(j => `<@${j.id}>        ${j.rol}`)
+    .map(j => {
+      if (j.id === "Por confirmar" || j.id === "por confirmar") {
+        return `❓        ${j.rol}`;
+      }
+      return `<@${j.id}>        ${j.rol}`;
+    })
     .join("\n");
 
   const embed = new EmbedBuilder()
@@ -278,10 +283,16 @@ async function enviarEmbed(canalId, nombreEquipo, jugadores, igl) {
 ${lista}
 
 👑 **IGL del equipo:** ${igl}  
-🗺️ **Mapa a jugar:** Por selecionar
+📅 **Día:** ${dia}
+⏰ **Hora:** ${hora}
+📺 **Streaming:** ${url}
+${mapa}
 `);
 
-  await canal.send({ embeds: [embed] });
+  await canal.send({
+    content: "@here", // ✅ ahora sí menciona
+    embeds: [embed]
+  });
 }
 
 // =====================
