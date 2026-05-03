@@ -26,7 +26,7 @@ client.once('clientReady', async () => {
   console.log("🤖 Bot conectado");
   console.log("Bot listo");
 
-  // =====================
+ // =====================
 // Equipo 1 A
 // =====================
 await enviarEmbed(
@@ -42,7 +42,8 @@ await enviarEmbed(
   "<@998634496150749225>",
   "Sabado 9 Mayo",
   "17:00 Primera partida 18:00 Segunda partida",
-  "https://www.twitch.tv/4rgea"
+  "https://www.twitch.tv/4rgea",
+  "🗺️ Mapa a jugar: Por seleccionar"
 );
 
 // =====================
@@ -61,7 +62,8 @@ await enviarEmbed(
   "<@382631918098710539>",
   "Sabado 9 Mayo",
   "17:00 Primera partida 18:00 Segunda partida",
-  "https://www.twitch.tv/4rgea"
+  "https://www.twitch.tv/4rgea",
+  "🗺️ Mapa a jugar: Por seleccionar"
 );
 
 // =====================
@@ -80,7 +82,8 @@ await enviarEmbed(
   "Por confirmar",
   "Sabado 9 Mayo",
   "18:00 Primera partida 19:00 Segunda partida",
-  "https://www.twitch.tv/4rgea"
+  "https://www.twitch.tv/4rgea",
+  "🗺️ Mapa a jugar: Por seleccionar"
 );
 
 // =====================
@@ -99,7 +102,8 @@ await enviarEmbed(
   "<@Por confirmar>",
   "Sabado 9 Mayo",
   "18:00 Primera partida 19:00 Segunda partida",
-  "https://www.twitch.tv/4rgea"
+  "https://www.twitch.tv/4rgea",
+  "🗺️ Mapa a jugar: Por seleccionar"
 );
 
 // =====================
@@ -118,7 +122,8 @@ await enviarEmbed(
   "Por confirmar",
   "Sabado 9 Mayo",
   "19:00 Primera partida 20:00 Segunda partida",
-  "https://www.twitch.tv/4rgea"
+  "https://www.twitch.tv/4rgea",
+  "🗺️ Mapa a jugar: Por seleccionar"
 );
 
 // =====================
@@ -137,9 +142,11 @@ await enviarEmbed(
   "1380971709716369441",
   "Sabado 9 Mayo",
   "19:00 Primera partida 20:00 Segunda partida",
-  "https://www.twitch.tv/4rgea"
+  "https://www.twitch.tv/4rgea",
+  "🗺️ Mapa a jugar: Por seleccionar"
 );
 
+});
 // =====================
 // BIENVENIDA
 // =====================
