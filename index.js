@@ -81,7 +81,7 @@ await enviarEmbed(
   ],
   "Por confirmar",
   "Sabado 9 Mayo",
-  "18:00 Primera partida 19:00 Segunda partida",
+  "18:00 Primera partida 18:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
   "🗺️ Mapa a jugar: Por seleccionar"
 );
