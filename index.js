@@ -98,7 +98,7 @@ client.once('clientReady', async () => {
     "EQUIPO 3 A",
     [
       { id: "668504038538739722", rol: "Dualista" },
-      { id: "Por confirmar", rol: "Iniciador" },
+      { id: "1281728629344178322", rol: "Iniciador" },
       { id: "495914152968060938", rol: "Smoker" },
       { id: "836629418838589520", rol: "Centinela" },
       { id: "444239353045057536", rol: "Flex" },
