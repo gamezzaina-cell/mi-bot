@@ -27,102 +27,118 @@ client.once('clientReady', async () => {
   console.log("Bot listo");
 
   // =====================
-  // Equipo 1 A
-  // =====================
-  await enviarEmbed(
-    "1500182678828355817",
-    "EQUIPO 1 A",
-    [
-      { id: "1189508170448650261", rol: "Dualista" },
-      { id: "578651526072107019", rol: "Iniciador" },
-      { id: "556805672361132042", rol: "Smoker" },
-      { id: "700743394007187496", rol: "Centinela" },
-      { id: "998634496150749225", rol: "Flex" },
-    ],
-    "<@998634496150749225>"
-  );
+// Equipo 1 A
+// =====================
+await enviarEmbed(
+  "1500182678828355817",
+  "EQUIPO 1 A",
+  [
+    { id: "1189508170448650261", rol: "Dualista" },
+    { id: "578651526072107019", rol: "Iniciador" },
+    { id: "556805672361132042", rol: "Smoker" },
+    { id: "700743394007187496", rol: "Centinela" },
+    { id: "998634496150749225", rol: "Flex" },
+  ],
+  "<@998634496150749225>",
+  "Sabado 9 Mayo",
+  "17:00 Primera partida 18:00 Segunda partida",
+  "https://www.twitch.tv/4rgea"
+);
 
-  // =====================
-  // Equipo 1 B
-  // =====================
-  await enviarEmbed(
-    "1500231869663547513",
-    "EQUIPO 1 B",
-    [
-      { id: "Por confirmar", rol: "Dualista" },
-      { id: "382631918098710539", rol: "Iniciador" },
-      { id: "1168645060418605120", rol: "Smoker" },
-      { id: "1124143141067431985", rol: "Centinela" },
-      { id: "por confirmar", rol: "Flex" },
-    ],
-    "<@382631918098710539>"
-  );
+// =====================
+// Equipo 1 B
+// =====================
+await enviarEmbed(
+  "1500231869663547513",
+  "EQUIPO 1 B",
+  [
+    { id: "Por confirmar", rol: "Dualista" },
+    { id: "382631918098710539", rol: "Iniciador" },
+    { id: "1168645060418605120", rol: "Smoker" },
+    { id: "1124143141067431985", rol: "Centinela" },
+    { id: "por confirmar", rol: "Flex" },
+  ],
+  "<@382631918098710539>",
+  "Sabado 9 Mayo",
+  "17:00 Primera partida 18:00 Segunda partida",
+  "https://www.twitch.tv/4rgea"
+);
 
-  // =====================
-  // Equipo 2 A
-  // =====================
-  await enviarEmbed(
-    "1500182692749115392",
-    "EQUIPO 2 A",
-    [
-      { id: "614834472000552989", rol: "Dualista" },
-      { id: "967085306207670304", rol: "Iniciador" },
-      { id: "1068593618660622498", rol: "Smoker" },
-      { id: "648151230169743384", rol: "Centinela" },
-      { id: "688703812856184897", rol: "Flex" },
-    ],
-    "Por confirmar"
-  );
+// =====================
+// Equipo 2 A
+// =====================
+await enviarEmbed(
+  "1500182692749115392",
+  "EQUIPO 2 A",
+  [
+    { id: "614834472000552989", rol: "Dualista" },
+    { id: "967085306207670304", rol: "Iniciador" },
+    { id: "1068593618660622498", rol: "Smoker" },
+    { id: "648151230169743384", rol: "Centinela" },
+    { id: "688703812856184897", rol: "Flex" },
+  ],
+  "Por confirmar",
+  "Sabado 9 Mayo",
+  "18:00 Primera partida 19:00 Segunda partida",
+  "https://www.twitch.tv/4rgea"
+);
 
-  // =====================
-  // Equipo 2 B
-  // =====================
-  await enviarEmbed(
-    "1500182706858754148",
-    "EQUIPO 2 B",
-    [
-      { id: "1235271564639997956", rol: "Dualista" },
-      { id: "880432639188803644", rol: "Iniciador" },
-      { id: "969903596097376256", rol: "Smoker" },
-      { id: "Por confirmar", rol: "Centinela" },
-      { id: "Por confirmar", rol: "Flex" },
-    ],
-    "<@Por confirmar>"
-  );
+// =====================
+// Equipo 2 B
+// =====================
+await enviarEmbed(
+  "1500182706858754148",
+  "EQUIPO 2 B",
+  [
+    { id: "1235271564639997956", rol: "Dualista" },
+    { id: "880432639188803644", rol: "Iniciador" },
+    { id: "969903596097376256", rol: "Smoker" },
+    { id: "Por confirmar", rol: "Centinela" },
+    { id: "Por confirmar", rol: "Flex" },
+  ],
+  "<@Por confirmar>",
+  "Sabado 9 Mayo",
+  "18:00 Primera partida 19:00 Segunda partida",
+  "https://www.twitch.tv/4rgea"
+);
 
-  // =====================
-  // Equipo 3 A
-  // =====================
-  await enviarEmbed(
-    "1500231605019480116",
-    "EQUIPO 3 A",
-    [
-      { id: "668504038538739722", rol: "Dualista" },
-      { id: "1281728629344178322", rol: "Iniciador" },
-      { id: "495914152968060938", rol: "Smoker" },
-      { id: "836629418838589520", rol: "Centinela" },
-      { id: "444239353045057536", rol: "Flex" },
-    ],
-    "Por confirmar"
-  );
+// =====================
+// Equipo 3 A
+// =====================
+await enviarEmbed(
+  "1500231605019480116",
+  "EQUIPO 3 A",
+  [
+    { id: "668504038538739722", rol: "Dualista" },
+    { id: "1281728629344178322", rol: "Iniciador" },
+    { id: "495914152968060938", rol: "Smoker" },
+    { id: "836629418838589520", rol: "Centinela" },
+    { id: "444239353045057536", rol: "Flex" },
+  ],
+  "Por confirmar",
+  "Sabado 9 Mayo",
+  "19:00 Primera partida 20:00 Segunda partida",
+  "https://www.twitch.tv/4rgea"
+);
 
-  // =====================
-  // Equipo 3 B
-  // =====================
-  await enviarEmbed(
-    "1500231656232063006",
-    "EQUIPO 3 B",
-    [
-      { id: "1054461661945274398", rol: "Dualista" },
-      { id: "1380971709716369441", rol: "Iniciador" },
-      { id: "1427739343254192272", rol: "Smoker" },
-      { id: "828314118381502494", rol: "Centinela" },
-      { id: "810516417111261185", rol: "Flex" },
-    ],
-    "Por confirmar"
-  );
-
-});
+// =====================
+// Equipo 3 B
+// =====================
+await enviarEmbed(
+  "1500231656232063006",
+  "EQUIPO 3 B",
+  [
+    { id: "1054461661945274398", rol: "Dualista" },
+    { id: "1380971709716369441", rol: "Iniciador" },
+    { id: "1427739343254192272", rol: "Smoker" },
+    { id: "828314118381502494", rol: "Centinela" },
+    { id: "810516417111261185", rol: "Flex" },
+  ],
+  "1380971709716369441",
+  "Sabado 9 Mayo",
+  "19:00 Primera partida 20:00 Segunda partida",
+  "https://www.twitch.tv/4rgea"
+);
 
 // =====================
 // BIENVENIDA
