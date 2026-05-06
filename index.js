@@ -271,7 +271,7 @@ Compete, stand out, and get noticed.
 // =====================
 // FUNCION PARA ENVIAR EMBED
 // =====================
-async function enviarEmbed(canalId, nombreEquipo, jugadores, igl, dia, hora, url, mapa) {
+async function enviarEmbed(canalId, nombreEquipo, jugadores, igl, dia, hora, url, mapa, arbitro) {
   const canal = await client.channels.fetch(canalId);
 
   const lista = jugadores
