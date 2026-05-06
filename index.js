@@ -135,7 +135,7 @@ await enviarEmbed(
   [
     { id: "1054461661945274398", rol: "Dualista" },
     { id: "1380971709716369441", rol: "Iniciador" },
-    { id: "Por confirmar", rol: "Smoker" },
+    { id: "Suplente", rol: "Smoker" },
     { id: "828314118381502494", rol: "Centinela" },
     { id: "810516417111261185", rol: "Flex" },
   ],
