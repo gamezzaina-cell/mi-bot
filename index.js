@@ -26,7 +26,7 @@ client.once('clientReady', async () => {
   console.log("🤖 Bot conectado");
   console.log("Bot listo");
 
- // =====================
+// =====================
 // Equipo 1 A
 // =====================
 await enviarEmbed(
@@ -43,7 +43,8 @@ await enviarEmbed(
   "Sabado 9 Mayo",
   "17:00 Primera partida 18:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar"
+  "🗺️ Mapa a jugar: Por seleccionar",
+  "Arbitro de la partida: <@1304902589347004446>"
 );
 
 // =====================
@@ -63,7 +64,8 @@ await enviarEmbed(
   "Sabado 9 Mayo",
   "17:00 Primera partida 18:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar"
+  "🗺️ Mapa a jugar: Por seleccionar",
+  "Arbitro de la partida: <@1304902589347004446>"
 );
 
 // =====================
@@ -83,7 +85,8 @@ await enviarEmbed(
   "Sabado 9 Mayo",
   "18:00 Primera partida 18:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar"
+  "🗺️ Mapa a jugar: Por seleccionar",
+  "Arbitro de la partida: <@695732938033201232>"
 );
 
 // =====================
@@ -103,7 +106,8 @@ await enviarEmbed(
   "Sabado 9 Mayo",
   "18:00 Primera partida 19:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar"
+  "🗺️ Mapa a jugar: Por seleccionar",
+  "Arbitro de la partida: <@695732938033201232>"
 );
 
 // =====================
@@ -123,7 +127,8 @@ await enviarEmbed(
   "Sabado 9 Mayo",
   "19:00 Primera partida 20:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar"
+  "🗺️ Mapa a jugar: Por seleccionar",
+  "Arbitro de la partida: <@792964396291719189>"
 );
 
 // =====================
@@ -143,7 +148,8 @@ await enviarEmbed(
   "Sabado 9 Mayo",
   "19:00 Primera partida 20:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar"
+  "🗺️ Mapa a jugar: Por seleccionar",
+  "Arbitro de la partida: <@792964396291719189>"
 );
 
 });
