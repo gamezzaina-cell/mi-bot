@@ -57,7 +57,7 @@ await enviarEmbed(
     { id: "382631918098710539", rol: "Iniciador" },
     { id: "1168645060418605120", rol: "Smoker" },
     { id: "1124143141067431985", rol: "Centinela" },
-    { id: "por confirmar", rol: "Flex" },
+    { id: "Suplente", rol: "Flex" },
   ],
   "<@382631918098710539>",
   "Sabado 9 Mayo",
