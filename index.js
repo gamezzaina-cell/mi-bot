@@ -292,6 +292,7 @@ ${lista}
 📅 **Día:** ${dia}
 ⏰ **Hora:** ${hora}
 📺 **Streaming:** ${url}
+⚖️ **Árbitro de la partida:** ${arbitro}
 ${mapa}
 `);
 
