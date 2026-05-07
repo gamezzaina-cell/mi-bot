@@ -79,11 +79,11 @@ await enviarEmbed(
     { id: "967085306207670304", rol: "Iniciador" },
     { id: "1068593618660622498", rol: "Smoker" },
     { id: "648151230169743384", rol: "Centinela" },
-    { id: "Por confirmar", rol: "Flex" },
+    { id: "728258506351837244", rol: "Flex" },
   ],
   "Por confirmar",
   "Sabado 9 Mayo",
-  "18:00 Primera partida 18:00 Segunda partida",
+  "18:00 Primera partida 19:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
   "🗺️ Mapa a jugar: Por seleccionar",
   "<@695732938033201232>"
