@@ -79,7 +79,7 @@ await enviarEmbed(
     { id: "967085306207670304", rol: "Iniciador" },
     { id: "1068593618660622498", rol: "Smoker" },
     { id: "648151230169743384", rol: "Centinela" },
-    { id: "728258506351837244", rol: "Flex" },
+    { id: "850072040090501171", rol: "Flex" },
   ],
   "Por confirmar",
   "Sabado 9 Mayo",
@@ -140,7 +140,7 @@ await enviarEmbed(
   [
     { id: "1054461661945274398", rol: "Dualista" },
     { id: "1380971709716369441", rol: "Iniciador" },
-    { id: "Suplente", rol: "Smoker" },
+    { id: "728258506351837244", rol: "Smoker" },
     { id: "828314118381502494", rol: "Centinela" },
     { id: "810516417111261185", rol: "Flex" },
   ],
