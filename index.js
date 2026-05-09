@@ -76,7 +76,7 @@ await enviarEmbed(
   "EQUIPO 2 A",
   [
     { id: "614834472000552989", rol: "Dualista" },
-    { id: "792964396291719189", rol: "Iniciador" },
+    { id: "680126232268111885", rol: "Iniciador" },
     { id: "1068593618660622498", rol: "Smoker" },
     { id: "648151230169743384", rol: "Centinela" },
     { id: "850072040090501171", rol: "Flex" },
