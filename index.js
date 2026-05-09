@@ -117,7 +117,7 @@ await enviarEmbed(
   "1500231605019480116",
   "EQUIPO 3 A",
   [
-    { id: "668504038538739722", rol: "Dualista" },
+    { id: "1304902589347004446", rol: "Dualista" },
     { id: "1281728629344178322", rol: "Iniciador" },
     { id: "495914152968060938", rol: "Smoker" },
     { id: "836629418838589520", rol: "Centinela" },
