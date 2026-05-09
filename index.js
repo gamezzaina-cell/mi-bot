@@ -40,10 +40,10 @@ await enviarEmbed(
     { id: "998634496150749225", rol: "Flex" },
   ],
   "<@998634496150749225>",
-  "Sabado 9 Mayo",
-  "17:00 Primera partida 18:00 Segunda partida",
+  "Domingo 10 Mayo (Aplazado) ",
+  "Por confirmar",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar",
+  "🗺️ Mapa a jugar: Ascent",
   "<@1304902589347004446>"
 );
 
@@ -54,17 +54,17 @@ await enviarEmbed(
   "1500231869663547513",
   "EQUIPO 1 B",
   [
-    { id: "Por confirmar", rol: "Dualista" },
+    { id: "436967885278281749", rol: "Dualista" },
     { id: "382631918098710539", rol: "Iniciador" },
     { id: "1168645060418605120", rol: "Smoker" },
     { id: "1124143141067431985", rol: "Centinela" },
-    { id: "Suplente", rol: "Flex" },
+    { id: "695732938033201232", rol: "Flex" },
   ],
   "<@382631918098710539>",
-  "Sabado 9 Mayo",
-  "17:00 Primera partida 18:00 Segunda partida",
+  "Domingo 10 Mayo (Aplazado) ",
+  "Por confirmar",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar",
+  "🗺️ Mapa a jugar: Ascent",
   "<@1304902589347004446>"
 );
 
@@ -76,7 +76,7 @@ await enviarEmbed(
   "EQUIPO 2 A",
   [
     { id: "614834472000552989", rol: "Dualista" },
-    { id: "967085306207670304", rol: "Iniciador" },
+    { id: "792964396291719189", rol: "Iniciador" },
     { id: "1068593618660622498", rol: "Smoker" },
     { id: "648151230169743384", rol: "Centinela" },
     { id: "850072040090501171", rol: "Flex" },
@@ -85,7 +85,7 @@ await enviarEmbed(
   "Sabado 9 Mayo",
   "18:00 Primera partida 19:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar",
+  "🗺️ Mapa a jugar: Ascent",
   "<@695732938033201232>"
 );
 
@@ -106,7 +106,7 @@ await enviarEmbed(
   "Sabado 9 Mayo",
   "18:00 Primera partida 19:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar",
+  "🗺️ Mapa a jugar: Ascent",
   "<@695732938033201232>"
 );
 
@@ -127,7 +127,7 @@ await enviarEmbed(
   "Sabado 9 Mayo",
   "19:00 Primera partida 20:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar",
+  "🗺️ Mapa a jugar: Ascent",
   "<@792964396291719189>"
 );
 
@@ -148,7 +148,7 @@ await enviarEmbed(
   "Sabado 9 Mayo",
   "19:00 Primera partida 20:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Por seleccionar",
+  "🗺️ Mapa a jugar: Ascent",
   "<@792964396291719189>"
 );
 
