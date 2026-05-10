@@ -298,7 +298,6 @@ ${mapa}
 
 await canal.send({
   embeds: [embed]
-});
   });
 }
 
