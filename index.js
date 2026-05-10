@@ -263,35 +263,35 @@ Compete, stand out, and get noticed.
 
 ||@everyone||`);
   }
-});
 
-// !player
-if (message.content.startsWith('!player')) {
-  const user = message.mentions.users.first();
-  if (!user) return message.channel.send("❌ Usa: !player @usuario rango rol");
+  // !player
+  if (message.content.startsWith('!player')) {
+    const user = message.mentions.users.first();
+    if (!user) return message.channel.send("❌ Usa: !player @usuario rango rol");
 
-  const args = message.content
-    .replace('!player', '')
-    .replace(`<@${user.id}>`, '')
-    .replace(`<@!${user.id}>`, '')
-    .trim()
-    .split(' ');
+    const args = message.content
+      .replace('!player', '')
+      .replace(`<@${user.id}>`, '')
+      .replace(`<@!${user.id}>`, '')
+      .trim()
+      .split(' ');
 
-  const rango = args[0];
-  const rol = args.slice(1).join(' ');
+    const rango = args[0];
+    const rol = args.slice(1).join(' ');
 
-  if (!rango || !rol) {
-    return message.channel.send("❌ Uso: !player @usuario <emoji_rango> <rol>");
-  }
+    if (!rango || !rol) {
+      return message.channel.send("❌ Uso: !player @usuario <emoji_rango> <rol>");
+    }
 
-  return message.channel.send(`# 🎮 Nuevo participante confirmado para las 10mans de argea
+    return message.channel.send(`# 🎮 Nuevo participante confirmado para las 10mans de argea
 
 👤 ${user}
 🏆 Rango: ${rango}
 🎯 Rol: ${rol}
 
 ||@everyone||`);
-}
+  }
+});
 // =====================
 // FUNCION PARA ENVIAR EMBED
 // =====================
