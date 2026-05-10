@@ -33,18 +33,18 @@ await enviarEmbed(
   "1500182678828355817",
   "EQUIPO 1 A",
   [
-    { id: "1189508170448650261", rol: "Dualista" },
-    { id: "578651526072107019", rol: "Iniciador" },
-    { id: "556805672361132042", rol: "Smoker" },
+    { id: "Por confirmar", rol: "Dualista" },
+    { id: "Por confirmar", rol: "Iniciador" },
+    { id: "Por confirmar", rol: "Smoker" },
     { id: "700743394007187496", rol: "Centinela" },
-    { id: "998634496150749225", rol: "Flex" },
+    { id: "Por confirmar", rol: "Flex" },
   ],
-  "<@998634496150749225>",
-  "Domingo 10 Mayo (Aplazado) ",
-  "Por confirmar",
+  "<Por confirmar>",
+  "Viernes 15 de mayo",
+  "17:00 Primera partida 18:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Ascent",
-  "<@1304902589347004446>"
+  "🗺️ Mapa a jugar: Por confirmar",
+  "<@1191588735104593980>"
 );
 
 // =====================
@@ -54,18 +54,18 @@ await enviarEmbed(
   "1500231869663547513",
   "EQUIPO 1 B",
   [
-    { id: "436967885278281749", rol: "Dualista" },
-    { id: "382631918098710539", rol: "Iniciador" },
-    { id: "1168645060418605120", rol: "Smoker" },
-    { id: "1124143141067431985", rol: "Centinela" },
-    { id: "695732938033201232", rol: "Flex" },
+    { id: "Por confirmar", rol: "Dualista" },
+    { id: "Por confirmar", rol: "Iniciador" },
+    { id: "Por confirmar", rol: "Smoker" },
+    { id: "Por confirmar", rol: "Centinela" },
+    { id: "Por confirmar", rol: "Flex" },
   ],
-  "<@382631918098710539>",
-  "Domingo 10 Mayo (Aplazado) ",
-  "Por confirmar",
+  "<Por confirmar>",
+  "Viernes 15 de mayo ",
+  "17:00 Primera partida 18:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Ascent",
-  "<@1304902589347004446>"
+  "🗺️ Mapa a jugar: Por confirmar",
+  "<@1191588735104593980>"
 );
 
 // =====================
@@ -75,18 +75,18 @@ await enviarEmbed(
   "1500182692749115392",
   "EQUIPO 2 A",
   [
-    { id: "614834472000552989", rol: "Dualista" },
-    { id: "680126232268111885", rol: "Iniciador" },
-    { id: "1068593618660622498", rol: "Smoker" },
-    { id: "648151230169743384", rol: "Centinela" },
-    { id: "850072040090501171", rol: "Flex" },
+    { id: "Por confirmar", rol: "Dualista" },
+    { id: "Por confirmar", rol: "Iniciador" },
+    { id: "Por confirmar", rol: "Smoker" },
+    { id: "Por confirmar", rol: "Centinela" },
+    { id: "Por confirmar", rol: "Flex" },
   ],
   "Por confirmar",
-  "Sabado 9 Mayo",
+  "Viernes 15 de mayo ",
   "18:00 Primera partida 19:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
   "🗺️ Mapa a jugar: Ascent",
-  "<@695732938033201232>"
+  "<@1304902589347004446>"
 );
 
 // =====================
@@ -96,18 +96,18 @@ await enviarEmbed(
   "1500182706858754148",
   "EQUIPO 2 B",
   [
-    { id: "1235271564639997956", rol: "Dualista" },
-    { id: "880432639188803644", rol: "Iniciador" },
+    { id: "Por confirmar", rol: "Dualista" },
+    { id: "Por confirmar", rol: "Iniciador" },
     { id: "969903596097376256", rol: "Smoker" },
-    { id: "688703812856184897", rol: "Centinela" },
-    { id: "1427739343254192272", rol: "Flex" },
+    { id: "Por confirmar", rol: "Centinela" },
+    { id: "Por confirmar", rol: "Flex" },
   ],
   "<@Por confirmar>",
-  "Sabado 9 Mayo",
+  "Viernes 15 de mayo",
   "18:00 Primera partida 19:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Ascent",
-  "<@695732938033201232>"
+  "🗺️ Mapa a jugar: Por confirmar",
+  "<@1304902589347004446>"
 );
 
 // =====================
@@ -117,18 +117,18 @@ await enviarEmbed(
   "1500231605019480116",
   "EQUIPO 3 A",
   [
-    { id: "1304902589347004446", rol: "Dualista" },
-    { id: "1281728629344178322", rol: "Iniciador" },
-    { id: "495914152968060938", rol: "Smoker" },
-    { id: "836629418838589520", rol: "Centinela" },
-    { id: "444239353045057536", rol: "Flex" },
+    { id: "Por confirmar", rol: "Dualista" },
+    { id: "Por confirmar", rol: "Iniciador" },
+    { id: "Por confirmar", rol: "Smoker" },
+    { id: "Por confirmar", rol: "Centinela" },
+    { id: "Por confirmar", rol: "Flex" },
   ],
   "Por confirmar",
-  "Sabado 9 Mayo",
+  "Viernes 15 de mayo",
   "19:00 Primera partida 20:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Ascent",
-  "<@792964396291719189>"
+  "🗺️ Mapa a jugar: Por confirmar",
+  "<Por confirmar>"
 );
 
 // =====================
@@ -138,18 +138,18 @@ await enviarEmbed(
   "1500231656232063006",
   "EQUIPO 3 B",
   [
-    { id: "1054461661945274398", rol: "Dualista" },
-    { id: "1380971709716369441", rol: "Iniciador" },
-    { id: "728258506351837244", rol: "Smoker" },
-    { id: "828314118381502494", rol: "Centinela" },
-    { id: "810516417111261185", rol: "Flex" },
+    { id: "Por confirmar", rol: "Dualista" },
+    { id: "Por confirmar", rol: "Iniciador" },
+    { id: "Por confirmar", rol: "Smoker" },
+    { id: "Por confirmar", rol: "Centinela" },
+    { id: "Por confirmar", rol: "Flex" },
   ],
   "<@1380971709716369441>",
-  "Sabado 9 Mayo",
+  "Viernes 15 de mayo",
   "19:00 Primera partida 20:00 Segunda partida",
   "https://www.twitch.tv/4rgea",
-  "🗺️ Mapa a jugar: Ascent",
-  "<@792964396291719189>"
+  "🗺️ Mapa a jugar: Por confirmar",
+  "<Por confirmar>"
 );
 
 });
@@ -296,11 +296,45 @@ ${lista}
 ${mapa}
 `);
 
-  await canal.send({
-    content: "@here", // ✅ ahora sí menciona
-    embeds: [embed]
+await canal.send({
+  embeds: [embed]
+});
   });
 }
+
+const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+
+const client = new Client({
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages]
+});
+
+client.once('ready', async () => {
+
+    // ID del canal donde quieres enviar el anuncio
+    const canal = client.channels.cache.get('1503052099179647086');
+
+    const anuncio = new EmbedBuilder()
+        .setColor('#ff0000')
+        .setTitle('📢 NUEVA FECHA PARA LAS 10MANS 📢')
+        .setDescription(
+            `Debido a los cambios, ahora habrá **más tiempo para apuntarse** a las 10mans.\n\n` +
+            `📅 **Fecha:** Viernes 15\n` +
+            `🕔 **Horario:** Entre las 17:00 y las 21:00\n\n` +
+            `⚠️ La hora exacta dependerá del rango de cada jugador, por lo que se os asignará equipo y horario correspondiente.\n` +
+            `Si tenéis dudas sobre qué equipo u horario os tocaría al apuntaros, se habilitarán **tickets en el servidor** para resolverlas.\n\n` +
+            `🎮 Se jugarán únicamente **2 partidas**:\n` +
+            `• 1 partida sin retransmisión para prepararos.\n` +
+            `• 1 partida retransmitida en nuestro canal de Twitch.\n\n` +
+            `🔥 ¡No os olvidéis de apuntaros!`
+        )
+        .setFooter({ text: '10Mans Community' })
+        .setTimestamp();
+
+    // Envía el mensaje al canal
+    canal.send({ embeds: [anuncio] });
+});
+
+
 
 // =====================
 // LOGIN
