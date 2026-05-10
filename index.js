@@ -26,6 +26,30 @@ client.once('clientReady', async () => {
   console.log("🤖 Bot conectado");
   console.log("Bot listo");
 
+  // =====================
+  // ANUNCIO 10MANS
+  // =====================
+  const canalAnuncio = client.channels.cache.get('1503052099179647086');
+
+  const anuncio = new EmbedBuilder()
+    .setColor('#ff0000')
+    .setTitle('📢 NUEVA FECHA PARA LAS 10MANS 📢')
+    .setDescription(
+      `Debido a los cambios, ahora habrá **más tiempo para apuntarse** a las 10mans.\n\n` +
+      `📅 **Fecha:** Viernes 15\n` +
+      `🕔 **Horario:** Entre las 17:00 y las 21:00\n\n` +
+      `⚠️ La hora exacta dependerá del rango de cada jugador, por lo que se os asignará equipo y horario correspondiente.\n` +
+      `Si tenéis dudas sobre qué equipo u horario os tocaría al apuntaros, se habilitarán **tickets en el servidor** para resolverlas.\n\n` +
+      `🎮 Se jugarán únicamente **2 partidas**:\n` +
+      `• 1 partida sin retransmisión para prepararos.\n` +
+      `• 1 partida retransmitida en nuestro canal de Twitch.\n\n` +
+      `🔥 ¡No os olvidéis de apuntaros!`
+    )
+    .setFooter({ text: '10Mans Community' })
+    .setTimestamp();
+
+  await canalAnuncio.send({ embeds: [anuncio] });
+
 // =====================
 // Equipo 1 A
 // =====================
@@ -153,6 +177,7 @@ await enviarEmbed(
 );
 
 });
+
 // =====================
 // BIENVENIDA
 // =====================
@@ -238,34 +263,6 @@ Compete, stand out, and get noticed.
 
 ||@everyone||`);
   }
-
-  // !player
-  if (message.content.startsWith('!player')) {
-    const user = message.mentions.users.first();
-    if (!user) return message.channel.send("❌ Usa: !player @usuario rango rol");
-
-    const args = message.content
-      .replace('!player', '')
-      .replace(`<@${user.id}>`, '')
-      .replace(`<@!${user.id}>`, '')
-      .trim()
-      .split(' ');
-
-    const rango = args[0];
-    const rol = args.slice(1).join(' ');
-
-    if (!rango || !rol) {
-      return message.channel.send("❌ Uso: !player @usuario <rango> <rol>");
-    }
-
-    return message.channel.send(`# 🎮 NUEVO PLAYER CONFIRMADO PARA LAS 1OMANS
-
-👤 ${user}
-🏆 Rango: ${rango}
-🎯 Rol: ${rol}
-
-||@here||`);
-  }
 });
 
 // =====================
@@ -296,44 +293,10 @@ ${lista}
 ${mapa}
 `);
 
-await canal.send({
-  embeds: [embed]
+  await canal.send({
+    embeds: [embed]
   });
 }
-
-const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
-
-const client = new Client({
-    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages]
-});
-
-client.once('ready', async () => {
-
-    // ID del canal donde quieres enviar el anuncio
-    const canal = client.channels.cache.get('1503052099179647086');
-
-    const anuncio = new EmbedBuilder()
-        .setColor('#ff0000')
-        .setTitle('📢 NUEVA FECHA PARA LAS 10MANS 📢')
-        .setDescription(
-            `Debido a los cambios, ahora habrá **más tiempo para apuntarse** a las 10mans.\n\n` +
-            `📅 **Fecha:** Viernes 15\n` +
-            `🕔 **Horario:** Entre las 17:00 y las 21:00\n\n` +
-            `⚠️ La hora exacta dependerá del rango de cada jugador, por lo que se os asignará equipo y horario correspondiente.\n` +
-            `Si tenéis dudas sobre qué equipo u horario os tocaría al apuntaros, se habilitarán **tickets en el servidor** para resolverlas.\n\n` +
-            `🎮 Se jugarán únicamente **2 partidas**:\n` +
-            `• 1 partida sin retransmisión para prepararos.\n` +
-            `• 1 partida retransmitida en nuestro canal de Twitch.\n\n` +
-            `🔥 ¡No os olvidéis de apuntaros!`
-        )
-        .setFooter({ text: '10Mans Community' })
-        .setTimestamp();
-
-    // Envía el mensaje al canal
-    canal.send({ embeds: [anuncio] });
-});
-
-
 
 // =====================
 // LOGIN
