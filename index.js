@@ -1,5 +1,12 @@
 require('dotenv').config();
-const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+const {
+    Client,
+    GatewayIntentBits,
+    EmbedBuilder,
+    ActionRowBuilder,
+    ButtonBuilder,
+    ButtonStyle
+} = require('discord.js');
 
 console.log("Arrancando bot...");
 console.log("🔥 ESTE ES EL ARCHIVO CORRECTO");
@@ -8,260 +15,148 @@ console.log("🔥 ESTE ES EL ARCHIVO CORRECTO");
 // CLIENTE DISCORD
 // =====================
 const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
-  ],
-  allowedMentions: {
-    parse: ['everyone']
-  }
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
+    ],
+    allowedMentions: {
+        parse: ['everyone']
+    }
 });
 
 // =====================
 // READY
 // =====================
 client.once('clientReady', async () => {
-  console.log("🤖 Bot conectado");
-  console.log("Bot listo");
+    console.log("🤖 Bot conectado");
+    console.log("Bot listo");
 
-  // =====================
-  // ANUNCIO 10MANS
-  // =====================
-  const canalAnuncio = client.channels.cache.get('1503052099179647086');
+    const canalAnuncio = client.channels.cache.get('1503052099179647086');
 
-  const anuncio = new EmbedBuilder()
-    .setColor('#ff0000')
-    .setTitle('📢 NUEVA FECHA PARA LAS 10MANS 📢')
-    .setDescription(
-      `Debido a los cambios, ahora habrá **más tiempo para apuntarse** a las 10mans.\n\n` +
-      `📅 **Fecha:** Viernes 15\n` +
-      `🕔 **Horario:** Entre las 17:00 y las 21:00\n\n` +
-      `⚠️ La hora exacta dependerá del rango de cada jugador, por lo que se os asignará equipo y horario correspondiente.\n` +
-      `Si tenéis dudas sobre qué equipo u horario os tocaría al apuntaros, se habilitarán **tickets en el servidor** para resolverlas.\n\n` +
-      `🎮 Se jugarán únicamente **2 partidas**:\n` +
-      `• 1 partida sin retransmisión para prepararos.\n` +
-      `• 1 partida retransmitida en nuestro canal de Twitch.\n\n` +
-      `🔥 ¡No os olvidéis de apuntaros!`
-    )
-    .setFooter({ text: '10Mans Community' })
-    .setTimestamp();
+    const anuncio = new EmbedBuilder()
+        .setColor('#ff0000')
+        .setTitle('📢 NUEVA FECHA PARA LAS 10MANS 📢')
+        .setDescription(
+            `Debido a los cambios, ahora habrá **más tiempo para apuntarse** a las 10mans.\n\n` +
+            `📅 **Fecha:** Viernes 15\n` +
+            `🕔 **Horario:** Entre las 17:00 y las 21:00\n\n` +
+            `🔥 ¡No os olvidéis de apuntaros!`
+        )
+        .setFooter({ text: '10Mans Community' })
+        .setTimestamp();
 
-  await canalAnuncio.send({ embeds: [anuncio] });
-
+    await canalAnuncio.send({ embeds: [anuncio] });
+});
 
 // =====================
 // BIENVENIDA
 // =====================
 client.on('guildMemberAdd', member => {
-  const canal = member.guild.channels.cache.get("1467611664148074498");
-  if (!canal) return;
+    const canal = member.guild.channels.cache.get("1467611664148074498");
+    if (!canal) return;
 
-  const embed = {
-    color: 0x2ecc71,
-    title: "🎉 New member",
-    description: `👋 Bienvenido al servidor de argea <@${member.user.id}> 💚`,
-    image: {
-      url: "https://media.discordapp.net/attachments/1465118735999434886/1499077960869871767/Bienvenida.jpeg"
-    }
-  };
+    const embed = {
+        color: 0x2ecc71,
+        title: "🎉 New member",
+        description: `👋 Bienvenido al servidor de argea <@${member.user.id}> 💚`,
+        image: {
+            url: "https://media.discordapp.net/attachments/1465118735999434886/1499077960869871767/Bienvenida.jpeg"
+        }
+    };
 
-  canal.send({ embeds: [embed] });
+    canal.send({ embeds: [embed] });
 });
 
 // =====================
 // COMANDOS
 // =====================
 client.on('messageCreate', async message => {
-  if (message.author.bot) return;
+    if (message.author.bot) return;
 
-// !dm
-if (message.content.startsWith('!dm')) {
+    // =====================
+    // !dm
+    // =====================
+    if (message.content.startsWith('!dm')) {
 
-    const user = message.mentions.users.first();
+        const user = message.mentions.users.first();
 
-    if (!user) {
-        return message.channel.send("❌ Usa: !dm @usuario");
-    }
-
-    try {
-
-        await user.send(`👋 ¡Hola!
-
-Soy Arrgi, el bot oficial de ARGEA.
-
-Queremos informarte de que muy pronto se abrirán nuevas plazas para nuestras 10Mans de Valorant. 🎮
-
-Si estás interesado en recibir más información y participar, responde a este mensaje con un **SI**.
-
-Una vez recibamos tu respuesta, el equipo de ARGEA se pondrá en contacto contigo a través de nuestro servidor de Discord para explicarte todo el proceso y resolver cualquier duda que puedas tener.
-
-📩 Si necesitas atención directa o información adicional, puedes contactar con:
-• @aiinaaa._
-• @coltyyyuuus
-
-Organizadores de las 10Mans de ARGEA.
-
-¡Esperamos verte pronto! 🔥`);
-
-        return message.channel.send(`✅ DM enviado a ${user.tag}`);
-
-    } catch (err) {
-        console.error(err);
-        return message.channel.send(`❌ No he podido enviar un DM a ${user.tag}`);
-    }
-}
-
-// Respuestas por privado
-if (message.channel.isDMBased()) {
-
-    const respuesta = message.content.trim().toLowerCase();
-
-    if (respuesta === "si" || respuesta === "sí") {
+        if (!user) {
+            return message.channel.send("❌ Usa: !dm @usuario");
+        }
 
         try {
 
-            const canalComandos = await client.channels.fetch('1517172757362642964');
+            const row = new ActionRowBuilder().addComponents(
+                new ButtonBuilder()
+                    .setCustomId('si_10m')
+                    .setLabel('SI')
+                    .setStyle(ButtonStyle.Success),
 
-            await canalComandos.send(
-                `✅ **${message.author.tag}** ha respondido **SI** a la invitación de las 10Mans.\n👤 ID: ${message.author.id}`
+                new ButtonBuilder()
+                    .setCustomId('no_10m')
+                    .setLabel('NO')
+                    .setStyle(ButtonStyle.Danger)
             );
 
-            await message.reply(
-                "✅ Hemos recibido tu respuesta. Un organizador de ARGEA se pondrá en contacto contigo pronto."
-            );
+            await user.send({
+                content: `👋 Hola!
+
+Soy Arrgi, bot oficial de ARGEA.
+
+¿Quieres recibir info de las 10Mans?`,
+                components: [row]
+            });
+
+            return message.channel.send(`✅ DM enviado a ${user.tag}`);
 
         } catch (err) {
             console.error(err);
+            return message.channel.send(`❌ No he podido enviar DM a ${user.tag}`);
         }
     }
-}
-  
-  // !post
-  if (message.content.startsWith('!post')) {
-    const args = message.content.split(' ');
-    const url = args[1];
-    if (!url) return;
 
-    if (message.deletable) await message.delete().catch(() => {});
-    return message.channel.send(`# 🚨 NUEVO POST || @everyone ||\n\n🔥 ${url}`);
-  }
+    // =====================
+    // resto de comandos
+    // =====================
+});
 
-  // !twitch
-  if (message.content.startsWith('!twitch ')) {
-    const args = message.content.split(' ');
-    const url = args[1];
-    if (!url) return;
+// =====================
+// BOTONES (SI / NO)
+// =====================
+client.on('interactionCreate', async interaction => {
 
-    if (message.deletable) await message.delete().catch(() => {});
-    return message.channel.send(`# 🔴 ¡YA EN DIRECTO! || @everyone ||\n\n🎮 Pásate por el stream:\n👉 ${url}\n\n💜 ¡No te lo pierdas!`);
-  }
+    if (!interaction.isButton()) return;
 
-  // !twitchsp
-  if (message.content.startsWith('!twitchsp ')) {
-    const args = message.content.split(' ');
-    const url = args[1];
-    if (!url) return;
+    const canalComandos = await client.channels.fetch('1517172757362642964');
 
-    if (message.deletable) await message.delete().catch(() => {});
-    return message.channel.send(`# 🔴 ¡Spike Series está en directo! || @everyone ||\n\n🎮 Pásate por el stream:\n👉 ${url}\n\n💜 ¡No te lo pierdas!`);
-  }
+    if (interaction.customId === 'si_10m') {
 
-  // !info10m
-  if (message.content === '!info10m') {
-    return message.channel.send(`# **¿Quieres darte a conocer en Valorant? :dart: **
+        await canalComandos.send(
+            `✅ **${interaction.user.tag}** ha ACEPTADO las 10Mans.\n👤 ID: ${interaction.user.id}`
+        );
 
-** Únete a nuestras 10mans y demuestra de lo que eres capaz.
-
-¿Eres un equipo en busca de jugadores? Observa talento en acción y encuentra a tu próximo fichaje.
-¿Eres jugador y buscas equipo? Este es tu momento para brillar y mostrar tu nivel.
-
-Compite, destaca y haz que te vean.
-
-:point_right: Entra ahora y empieza a jugar con los mejores.
-:point_right: https://forms.gle/RDXhhJQXN2CR4S9K6 **
-
-
-# **Do you want to make a name for yourself in Valorant? :dart: **
-
-** Join our 10mans and prove what you're capable of.
-
-Are you a team looking for players? Watch talent in action and find your next recruit.
-Are you a player looking for a team? This is your moment to shine and showcase your level.
-
-Compete, stand out, and get noticed.
-
-:point_right: Join now and start playing with the best.
-
-:point_right: https://forms.gle/RDXhhJQXN2CR4S9K6 **
-
-||@everyone||`);
-  }
-
-  // !player
-  if (message.content.startsWith('!player')) {
-    const user = message.mentions.users.first();
-    if (!user) return message.channel.send("❌ Usa: !player @usuario rango rol");
-
-    const args = message.content
-      .replace('!player', '')
-      .replace(`<@${user.id}>`, '')
-      .replace(`<@!${user.id}>`, '')
-      .trim()
-      .split(' ');
-
-    const rango = args[0];
-    const rol = args.slice(1).join(' ');
-
-    if (!rango || !rol) {
-      return message.channel.send("❌ Uso: !player @usuario <emoji_rango> <rol>");
+        await interaction.reply({
+            content: "✅ Perfecto, te contactaremos pronto.",
+            ephemeral: true
+        });
     }
 
-    return message.channel.send(`# 🎮 Nuevo participante confirmado para las 10mans de argea
+    if (interaction.customId === 'no_10m') {
 
-👤 ${user}
-🏆 Rango: ${rango}
-🎯 Rol: ${rol}
+        await canalComandos.send(
+            `❌ **${interaction.user.tag}** ha RECHAZADO las 10Mans.`
+        );
 
-||@everyone||`);
-  }
+        await interaction.reply({
+            content: "👍 Entendido, gracias.",
+            ephemeral: true
+        });
+    }
 });
-// =====================
-// FUNCION PARA ENVIAR EMBED
-// =====================
-async function enviarEmbed(canalId, nombreEquipo, jugadores, igl, dia, hora, url, mapa, arbitro) {
-  const canal = await client.channels.fetch(canalId);
-
-  const lista = jugadores
-    .map(j => {
-      if (j.id === "Por confirmar" || j.id === "por confirmar") {
-        return `❓        ${j.rol}`;
-      }
-      return `<@${j.id}>        ${j.rol}`;
-    })
-    .join("\n");
-
-  const embed = new EmbedBuilder()
-    .setTitle(`🔵 ${nombreEquipo}`)
-    .setDescription(`
-${lista}
-
-👑 **IGL del equipo:** ${igl}  
-📅 **Día:** ${dia}
-⏰ **Hora:** ${hora}
-📺 **Streaming:** ${url}
-⚖️ **Árbitro de la partida:** ${arbitro}
-${mapa}
-`);
-
-  await canal.send({
-    embeds: [embed]
-  });
-}
 
 // =====================
 // LOGIN
 // =====================
 client.login(process.env.TOKEN);
-console.log("TOKEN:", process.env.TOKEN);
