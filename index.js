@@ -101,13 +101,24 @@ client.on('messageCreate', async message => {
             );
 
             await user.send({
-                content: `👋 Hola!
+    content: `👋 ¡Hola!
 
-Soy Arrgi, bot oficial de ARGEA.
+Soy Arrgi, el bot oficial de ARGEA.
+Queremos informarte de que muy pronto se abrirán nuevas plazas para nuestras 10Mans de Valorant. 🎮
 
-¿Quieres recibir info de las 10Mans?`,
-                components: [row]
-            });
+Si estás interesado en recibir más información para participar, responde a este mensaje con un **"Sí"**.
+
+Una vez recibamos tu respuesta, el equipo de ARGEA se pondrá en contacto contigo a través de nuestro servidor de Discord para explicarte todo el proceso y resolver cualquier duda que puedas tener.
+
+📩 Si necesitas atención directa o información adicional, puedes contactar con:
+• @aiinaaa._
+• @coltyyyuuus
+
+Organizadores de las 10Mans de ARGEA.
+
+¡Esperamos verte pronto en el servidor! 🔥`,
+    components: [row]
+});
 
             return message.channel.send(`✅ DM enviado a ${user.tag}`);
 
