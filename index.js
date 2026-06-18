@@ -203,6 +203,68 @@ client.on('guildMemberAdd', member => {
 client.on('messageCreate', async message => {
   if (message.author.bot) return;
 
+// !dm
+if (message.content.startsWith('!dm')) {
+
+    const user = message.mentions.users.first();
+
+    if (!user) {
+        return message.channel.send("❌ Usa: !dm @usuario");
+    }
+
+    try {
+
+        await user.send(`👋 ¡Hola!
+
+Soy Arrgi, el bot oficial de ARGEA.
+
+Queremos informarte de que muy pronto se abrirán nuevas plazas para nuestras 10Mans de Valorant. 🎮
+
+Si estás interesado en recibir más información y participar, responde a este mensaje con un **SI**.
+
+Una vez recibamos tu respuesta, el equipo de ARGEA se pondrá en contacto contigo a través de nuestro servidor de Discord para explicarte todo el proceso y resolver cualquier duda que puedas tener.
+
+📩 Si necesitas atención directa o información adicional, puedes contactar con:
+• @aiinaaa._
+• @coltyyyuuus
+
+Organizadores de las 10Mans de ARGEA.
+
+¡Esperamos verte pronto! 🔥`);
+
+        return message.channel.send(`✅ DM enviado a ${user.tag}`);
+
+    } catch (err) {
+        console.error(err);
+        return message.channel.send(`❌ No he podido enviar un DM a ${user.tag}`);
+    }
+}
+
+// Respuestas por privado
+if (message.channel.isDMBased()) {
+
+    const respuesta = message.content.trim().toLowerCase();
+
+    if (respuesta === "si" || respuesta === "sí") {
+
+        try {
+
+            const canalComandos = await client.channels.fetch('1517172757362642964');
+
+            await canalComandos.send(
+                `✅ **${message.author.tag}** ha respondido **SI** a la invitación de las 10Mans.\n👤 ID: ${message.author.id}`
+            );
+
+            await message.reply(
+                "✅ Hemos recibido tu respuesta. Un organizador de ARGEA se pondrá en contacto contigo pronto."
+            );
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+}
+  
   // !post
   if (message.content.startsWith('!post')) {
     const args = message.content.split(' ');
