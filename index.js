@@ -57,35 +57,19 @@ const args = message.content.split(' ');
 const url = args[1];
 if (!url) return;
 
-if (message.deletable) await message.delete().catch(() => {});
-return message.channel.send(`# 🚨 NUEVO POST || @everyone ||\n\n🔥 ${url}`);
-
-
-}
-
-// !twitch
-if (message.content.startsWith('!twitch ')) {
-const args = message.content.split(' ');
-const url = args[1];
-if (!url) return;
-
-if (message.deletable) await message.delete().catch(() => {});
-return message.channel.send(`# 🔴 ¡YA EN DIRECTO! || @everyone ||\n\n🎮 Pásate por el stream:\n👉 ${url}\n\n💜 ¡No te lo pierdas!`);
-
-
-}
-
 // !twitchsp
 if (message.content.startsWith('!twitchsp ')) {
-const args = message.content.split(' ');
-const url = args[1];
-if (!url) return;
+    const args = message.content.split(' ');
+    const url = args[1];
+    if (!url) return;
 
-if (message.deletable) await message.delete().catch(() => {});
-return message.channel.send(`# 🔴 ¡Spike Series está en directo! || @everyone ||\n\n🎮 Pásate por el stream:\n👉 ${url}\n\n💜 ¡No te lo pierdas!`);
+    if (message.deletable) await message.delete().catch(() => {});
+    return message.channel.send(`# 🔴 ¡Spike Series está en directo! || @everyone ||
 
+🎮 Pásate por el stream:
+👉 ${url}
 
-});
+💜 ¡No te lo pierdas!`);
 }
 
 // =====================
