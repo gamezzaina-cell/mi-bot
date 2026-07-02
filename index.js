@@ -36,7 +36,7 @@ if (!canal) return;
 const embed = {
 color: 0x2ecc71,
 title: "🎉 New member",
-description: 👋 Bienvenido al servidor de argea <@${member.user.id}> 💚,
+description: `👋 Bienvenido al servidor de argea <@${member.user.id}> 💚`,
 image: {
 url: "https://media.discordapp.net/attachments/1465118735999434886/1499077960869871767/Bienvenida.jpeg"
 }
