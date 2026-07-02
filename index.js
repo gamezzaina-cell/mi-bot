@@ -1,12 +1,5 @@
 require('dotenv').config();
-const {
-    Client,
-    GatewayIntentBits,
-    EmbedBuilder,
-    ActionRowBuilder,
-    ButtonBuilder,
-    ButtonStyle
-} = require('discord.js');
+const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 
 console.log("Arrancando bot...");
 console.log("🔥 ESTE ES EL ARCHIVO CORRECTO");
@@ -15,159 +8,88 @@ console.log("🔥 ESTE ES EL ARCHIVO CORRECTO");
 // CLIENTE DISCORD
 // =====================
 const client = new Client({
-    intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
-    ],
-    allowedMentions: {
-        parse: ['everyone']
-    }
+intents: [
+GatewayIntentBits.Guilds,
+GatewayIntentBits.GuildMembers,
+GatewayIntentBits.GuildMessages,
+GatewayIntentBits.MessageContent
+],
+allowedMentions: {
+parse: ['everyone']
+}
 });
 
 // =====================
 // READY
 // =====================
 client.once('clientReady', async () => {
-    console.log("🤖 Bot conectado");
-    console.log("Bot listo");
-
-    const canalAnuncio = client.channels.cache.get('1503052099179647086');
-
-    const anuncio = new EmbedBuilder()
-        .setColor('#ff0000')
-        .setTitle('📢 NUEVA FECHA PARA LAS 10MANS 📢')
-        .setDescription(
-            `Debido a los cambios, ahora habrá **más tiempo para apuntarse** a las 10mans.\n\n` +
-            `📅 **Fecha:** Viernes 15\n` +
-            `🕔 **Horario:** Entre las 17:00 y las 21:00\n\n` +
-            `🔥 ¡No os olvidéis de apuntaros!`
-        )
-        .setFooter({ text: '10Mans Community' })
-        .setTimestamp();
-
-    await canalAnuncio.send({ embeds: [anuncio] });
-});
+console.log("🤖 Bot conectado");
+console.log("Bot listo");
 
 // =====================
 // BIENVENIDA
 // =====================
 client.on('guildMemberAdd', member => {
-    const canal = member.guild.channels.cache.get("1467611664148074498");
-    if (!canal) return;
+const canal = member.guild.channels.cache.get("1467611664148074498");
+if (!canal) return;
 
-    const embed = {
-        color: 0x2ecc71,
-        title: "🎉 New member",
-        description: `👋 Bienvenido al servidor de argea <@${member.user.id}> 💚`,
-        image: {
-            url: "https://media.discordapp.net/attachments/1465118735999434886/1499077960869871767/Bienvenida.jpeg"
-        }
-    };
+const embed = {
+color: 0x2ecc71,
+title: "🎉 New member",
+description: 👋 Bienvenido al servidor de argea <@${member.user.id}> 💚,
+image: {
+url: "https://media.discordapp.net/attachments/1465118735999434886/1499077960869871767/Bienvenida.jpeg"
+}
+};
 
-    canal.send({ embeds: [embed] });
+canal.send({ embeds: [embed] });
 });
 
 // =====================
 // COMANDOS
 // =====================
 client.on('messageCreate', async message => {
-    if (message.author.bot) return;
+if (message.author.bot) return;
 
-    // =====================
-    // !dm
-    // =====================
-    if (message.content.startsWith('!dm')) {
+// !post
+if (message.content.startsWith('!post')) {
+const args = message.content.split(' ');
+const url = args[1];
+if (!url) return;
 
-        const user = message.mentions.users.first();
+if (message.deletable) await message.delete().catch(() => {});
+return message.channel.send(`# 🚨 NUEVO POST || @everyone ||\n\n🔥 ${url}`);
 
-        if (!user) {
-            return message.channel.send("❌ Usa: !dm @usuario");
-        }
 
-        try {
+}
 
-            const row = new ActionRowBuilder().addComponents(
-                new ButtonBuilder()
-                    .setCustomId('si_10m')
-                    .setLabel('SI')
-                    .setStyle(ButtonStyle.Success),
+// !twitch
+if (message.content.startsWith('!twitch ')) {
+const args = message.content.split(' ');
+const url = args[1];
+if (!url) return;
 
-                new ButtonBuilder()
-                    .setCustomId('no_10m')
-                    .setLabel('NO')
-                    .setStyle(ButtonStyle.Danger)
-            );
+if (message.deletable) await message.delete().catch(() => {});
+return message.channel.send(`# 🔴 ¡YA EN DIRECTO! || @everyone ||\n\n🎮 Pásate por el stream:\n👉 ${url}\n\n💜 ¡No te lo pierdas!`);
 
-            await user.send({
-    content: `👋 ¡Hola!
 
-Soy Arrgi, el bot oficial de ARGEA.
-Queremos informarte de que muy pronto se abrirán nuevas plazas para nuestras 10Mans de Valorant. 🎮
+}
 
-Si estás interesado en recibir más información para participar, responde a este mensaje con un **"Sí"**.
+// !twitchsp
+if (message.content.startsWith('!twitchsp ')) {
+const args = message.content.split(' ');
+const url = args[1];
+if (!url) return;
 
-Una vez recibamos tu respuesta, el equipo de ARGEA se pondrá en contacto contigo a través de nuestro servidor de Discord para explicarte todo el proceso y resolver cualquier duda que puedas tener.
+if (message.deletable) await message.delete().catch(() => {});
+return message.channel.send(`# 🔴 ¡Spike Series está en directo! || @everyone ||\n\n🎮 Pásate por el stream:\n👉 ${url}\n\n💜 ¡No te lo pierdas!`);
 
-📩 Si necesitas atención directa o información adicional, puedes contactar con:
-• @aiinaaa._
-• @coltyyyuuus
 
-Organizadores de las 10Mans de ARGEA.
-
-¡Esperamos verte pronto en el servidor! 🔥`,
-    components: [row]
 });
-
-            return message.channel.send(`✅ DM enviado a ${user.tag}`);
-
-        } catch (err) {
-            console.error(err);
-            return message.channel.send(`❌ No he podido enviar DM a ${user.tag}`);
-        }
-    }
-
-    // =====================
-    // resto de comandos
-    // =====================
-});
-
-// =====================
-// BOTONES (SI / NO)
-// =====================
-client.on('interactionCreate', async interaction => {
-
-    if (!interaction.isButton()) return;
-
-    const canalComandos = await client.channels.fetch('1517172757362642964');
-
-    if (interaction.customId === 'si_10m') {
-
-        await canalComandos.send(
-            `✅ **${interaction.user.tag}** ha ACEPTADO las 10Mans.\n👤 ID: ${interaction.user.id}`
-        );
-
-        await interaction.reply({
-            content: "✅ Perfecto, te contactaremos pronto.",
-            ephemeral: true
-        });
-    }
-
-    if (interaction.customId === 'no_10m') {
-
-        await canalComandos.send(
-            `❌ **${interaction.user.tag}** ha RECHAZADO las 10Mans.`
-        );
-
-        await interaction.reply({
-            content: "👍 Entendido, gracias.",
-            ephemeral: true
-        });
-    }
-});
+}
 
 // =====================
 // LOGIN
 // =====================
 client.login(process.env.TOKEN);
+console.log("TOKEN:", process.env.TOKEN);
