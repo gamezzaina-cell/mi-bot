@@ -39,7 +39,7 @@ client.on('guildMemberAdd', member => {
         title: "🎉 New member",
         description: `👋 Bienvenido al servidor de argea <@${member.user.id}> 💚`,
         image: {
-            url: "https://media.discordapp.net/attachments/1465118735999434886/1499077960869871767/Bienvenida.jpeg"
+            url: "https://media.discordapp.net/attachments/1551329949531774986/1569018691834617929/image.png?ex=6af1ee07&is=6af09c87&hm=744468d00815db6b6a60d295bcaefd42e96b0ca78b0947ac69dc36917145164d&=&format=webp&quality=lossless&width=1536&height=921"
         }
     };
 
