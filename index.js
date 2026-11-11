@@ -53,12 +53,20 @@ client.on('guildMemberAdd', member => {
 client.on('messageCreate', async message => {
     if (message.author.bot) return;
 
-    // !basicinfo
+        // !basicinfo
     if (message.content.trim() === '!basicinfo') {
-        const pdfEsp = new AttachmentBuilder('./EOS TOURNAMENT.pdf');
-        const pdfEng = new AttachmentBuilder('./EOS Tournament in ENGLISH.pdf');
+        const path = require('path');
+
+        const pdfEsp = new AttachmentBuilder(
+            path.join(__dirname, 'EOS TOURNAMENT.pdf')
+        );
+
+        const pdfEng = new AttachmentBuilder(
+            path.join(__dirname, 'EOS Tournament in ENGLISH.pdf')
+        );
 
         return message.channel.send({
+            content: '🌅 **EOS — BASIC INFORMATION**',
             files: [pdfEsp, pdfEng]
         });
     }
