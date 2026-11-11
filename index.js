@@ -116,6 +116,8 @@ const TICKET_EMOJI = "🎫";
 
 // Comando !ticket
 client.on("messageCreate", async (message) => {
+    console.log("REACCIÓN DETECTADA:", reaction.emoji.name, user.username);
+    
     if (message.author.bot) return;
 
     if (message.content.trim().toLowerCase() === "!ticket") {
