@@ -107,6 +107,135 @@ https://docs.google.com/forms/d/e/1FAIpQLSc4DaPpuv5qn_jgeL2n13QcoFo_JEGE4gPBbeV7
     }
 });
 
+// ================================
+// SISTEMA DE TICKETS EOS
+// ================================
+
+const TICKET_CATEGORY_ID = "1496205350951715018";
+const TICKET_EMOJI = "🎫";
+
+// Comando !ticket
+client.on("messageCreate", async (message) => {
+    if (message.author.bot) return;
+
+    if (message.content.trim().toLowerCase() === "!ticket") {
+        const ticketEmbed = {
+            color: 0xF1C40F,
+            title: "🎫 SOPORTE EOS",
+            description:
+                "¿Necesitas ayuda del equipo de EOS?\n\n" +
+                "Reacciona con 🎫 para abrir un ticket privado.\n\n" +
+                "Un miembro del equipo te atenderá lo antes posible.",
+            footer: {
+                text: "EOS ESPORTS • SUPPORT SYSTEM"
+            }
+        };
+
+        const sentMessage = await message.channel.send({
+            embeds: [ticketEmbed]
+        });
+
+        await sentMessage.react(TICKET_EMOJI);
+    }
+});
+
+// Crear ticket al reaccionar
+client.on("messageReactionAdd", async (reaction, user) => {
+    if (user.bot) return;
+
+    try {
+        if (reaction.partial) await reaction.fetch();
+        if (reaction.message.partial) await reaction.message.fetch();
+
+        if (reaction.emoji.name !== TICKET_EMOJI) return;
+
+        const guild = reaction.message.guild;
+        if (!guild) return;
+
+        const category = guild.channels.cache.get(TICKET_CATEGORY_ID);
+        if (!category) {
+            console.log("No se encuentra la categoría de tickets.");
+            return;
+        }
+
+        // Evitar tickets duplicados
+        const existingTicket = guild.channels.cache.find(channel =>
+            channel.parentId === TICKET_CATEGORY_ID &&
+            channel.name === `ticket-${user.id}`
+        );
+
+        if (existingTicket) {
+            await user.send(`Ya tienes un ticket abierto: ${existingTicket}`);
+            return;
+        }
+
+        const member = await guild.members.fetch(user.id);
+
+        const ticketChannel = await guild.channels.create({
+            name: `ticket-${user.id}`,
+            type: 0,
+            parent: TICKET_CATEGORY_ID,
+            permissionOverwrites: [
+                {
+                    id: guild.roles.everyone.id,
+                    deny: ["ViewChannel"]
+                },
+                {
+                    id: user.id,
+                    allow: [
+                        "ViewChannel",
+                        "SendMessages",
+                        "ReadMessageHistory",
+                        "AttachFiles"
+                    ]
+                },
+                {
+                    id: client.user.id,
+                    allow: [
+                        "ViewChannel",
+                        "SendMessages",
+                        "ReadMessageHistory",
+                        "ManageChannels"
+                    ]
+                }
+            ]
+        });
+
+        await ticketChannel.send({
+            content:
+                `👋 ¡Hola ${member}!\n\n` +
+                `Tu ticket de soporte de **EOS** ha sido creado.\n` +
+                `Explica tu problema y el equipo te atenderá lo antes posible.\n\n` +
+                `🔒 Para cerrar el ticket, utiliza el comando \`!cerrar\`.`
+        });
+
+        await user.send(`Tu ticket de EOS ha sido creado: ${ticketChannel}`);
+
+    } catch (error) {
+        console.error("Error creando ticket:", error);
+    }
+});
+
+// Comando !cerrar
+client.on("messageCreate", async (message) => {
+    if (message.author.bot) return;
+
+    if (message.content.trim().toLowerCase() === "!cerrar") {
+        if (
+            message.channel.parentId !== TICKET_CATEGORY_ID ||
+            !message.channel.name.startsWith("ticket-")
+        ) {
+            return;
+        }
+
+        await message.channel.send("🔒 Ticket cerrado. El canal se eliminará en 5 segundos.");
+
+        setTimeout(async () => {
+            await message.channel.delete().catch(console.error);
+        }, 5000);
+    }
+});
+
 // =====================
 // LOGIN
 // =====================
