@@ -66,7 +66,11 @@ client.on('messageCreate', async message => {
         );
 
         return message.channel.send({
-            content: '🌅 **EOS — BASIC INFORMATION**',
+            content: `🌅 **EOS — BASIC INFORMATION**
+
+𝐎𝐬 𝐬𝐮𝐛𝐨 𝐥𝐚 𝐢𝐧𝐟𝐨𝐫𝐦𝐚𝐜𝐢ó𝐧 𝐛á𝐬𝐢𝐜𝐚 𝐝𝐞𝐥 𝐭𝐨𝐫𝐧𝐞𝐨 𝐩𝐚𝐫𝐚 𝐬𝐚𝐛𝐞𝐫 𝐝𝐞 𝐪𝐮𝐞 𝐯𝐚 𝐞𝐥 𝐭𝐨𝐫𝐧𝐞𝐨 𝐲 𝐩𝐨𝐝𝐞𝐫 𝐡𝐚𝐜𝐞𝐫 𝐥𝐚 𝐩𝐫𝐞𝐢𝐧𝐬𝐜𝐫𝐢𝐩𝐜𝐢𝐨𝐧.
+
+𝐈'𝐦 𝐮𝐩𝐥𝐨𝐚𝐝𝐢𝐧𝐠 𝐭𝐡𝐞 𝐛𝐚𝐬𝐢𝐜 𝐢𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧 𝐚𝐛𝐨𝐮𝐭 𝐭𝐡𝐞 𝐭𝐨𝐮𝐫𝐧𝐚𝐦𝐞𝐧𝐭 𝐬𝐨 𝐲𝐨𝐮 𝐤𝐧𝐨𝐰 𝐰𝐡𝐚𝐭 𝐢𝐭'𝐬 𝐚𝐛𝐨𝐮𝐭 𝐚𝐧𝐝 𝐜𝐚𝐧 𝐩𝐫𝐞-𝐫𝐞𝐠𝐢𝐬𝐭𝐞𝐫.`,
             files: [pdfEsp, pdfEng]
         });
     }
