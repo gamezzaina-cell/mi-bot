@@ -107,17 +107,16 @@ https://docs.google.com/forms/d/e/1FAIpQLSc4DaPpuv5qn_jgeL2n13QcoFo_JEGE4gPBbeV7
     }
 });
 
-// ================================
-// SISTEMA DE TICKETS EOS
-// ================================
+
+ // ================================
+ // SISTEMA DE TICKETS EOS
+ // ================================
 
 const TICKET_CATEGORY_ID = "1496205350951715018";
 const TICKET_EMOJI = "🎫";
 
 // Comando !ticket
 client.on("messageCreate", async (message) => {
-    console.log("REACCIÓN DETECTADA:", reaction.emoji.name, user.username);
-    
     if (message.author.bot) return;
 
     if (message.content.trim().toLowerCase() === "!ticket") {
@@ -138,11 +137,14 @@ client.on("messageCreate", async (message) => {
         });
 
         await sentMessage.react(TICKET_EMOJI);
+        console.log("Mensaje de tickets publicado correctamente.");
     }
 });
 
 // Crear ticket al reaccionar
 client.on("messageReactionAdd", async (reaction, user) => {
+    console.log("REACCIÓN DETECTADA:", reaction.emoji.name, user.username);
+
     if (user.bot) return;
 
     try {
@@ -155,8 +157,9 @@ client.on("messageReactionAdd", async (reaction, user) => {
         if (!guild) return;
 
         const category = guild.channels.cache.get(TICKET_CATEGORY_ID);
+
         if (!category) {
-            console.log("No se encuentra la categoría de tickets.");
+            console.log("ERROR: No se encuentra la categoría de tickets.");
             return;
         }
 
@@ -173,6 +176,7 @@ client.on("messageReactionAdd", async (reaction, user) => {
 
         const member = await guild.members.fetch(user.id);
 
+        // Crear canal privado
         const ticketChannel = await guild.channels.create({
             name: `ticket-${user.id}`,
             type: 0,
@@ -213,8 +217,10 @@ client.on("messageReactionAdd", async (reaction, user) => {
 
         await user.send(`Tu ticket de EOS ha sido creado: ${ticketChannel}`);
 
+        console.log("Ticket creado correctamente:", ticketChannel.name);
+
     } catch (error) {
-        console.error("Error creando ticket:", error);
+        console.error("ERROR CREANDO TICKET:", error);
     }
 });
 
@@ -230,13 +236,16 @@ client.on("messageCreate", async (message) => {
             return;
         }
 
-        await message.channel.send("🔒 Ticket cerrado. El canal se eliminará en 5 segundos.");
+        await message.channel.send(
+            "🔒 Ticket cerrado. El canal se eliminará en 5 segundos."
+        );
 
         setTimeout(async () => {
             await message.channel.delete().catch(console.error);
         }, 5000);
     }
 });
+
 
 // =====================
 // LOGIN
