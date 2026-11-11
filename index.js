@@ -1,5 +1,6 @@
+
 require('dotenv').config();
-const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+const { Client, GatewayIntentBits, EmbedBuilder, AttachmentBuilder } = require('discord.js');
 
 console.log("Arrancando bot...");
 console.log("🔥 ESTE ES EL ARCHIVO CORRECTO");
@@ -51,6 +52,16 @@ client.on('guildMemberAdd', member => {
 // =====================
 client.on('messageCreate', async message => {
     if (message.author.bot) return;
+
+    // !basicinfo
+    if (message.content.trim() === '!basicinfo') {
+        const pdfEsp = new AttachmentBuilder('./EOS TOURNAMENT.pdf');
+        const pdfEng = new AttachmentBuilder('./EOS Tournament in ENGLISH.pdf');
+
+        return message.channel.send({
+            files: [pdfEsp, pdfEng]
+        });
+    }
 
     // !post
     if (message.content.startsWith('!post')) {
