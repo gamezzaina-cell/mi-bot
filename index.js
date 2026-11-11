@@ -74,7 +74,18 @@ client.on('messageCreate', async message => {
             files: [pdfEsp, pdfEng]
         });
     }
+    
+    // !preins
+    if (message.content.trim() === '!preins') {
+        return message.channel.send({
+            content: `***Aqui tenes el link para la nueva preisncripción a EOS TOURNAMENT!!***
 
+***Here's the link for the new EOS TOURNAMENT pre-registration!!***
+
+https://docs.google.com/forms/d/e/1FAIpQLSc4DaPpuv5qn_jgeL2n13QcoFo_JEGE4gPBbeV7iq136sdhxw/viewform?usp=header`
+        });
+    }
+    
     // !post
     if (message.content.startsWith('!post')) {
         const args = message.content.split(' ');
