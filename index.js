@@ -108,6 +108,7 @@ https://docs.google.com/forms/d/e/1FAIpQLSc4DaPpuv5qn_jgeL2n13QcoFo_JEGE4gPBbeV7
 });
 
 
+ 
  // ================================
  // SISTEMA DE TICKETS EOS
  // ================================
@@ -115,11 +116,16 @@ https://docs.google.com/forms/d/e/1FAIpQLSc4DaPpuv5qn_jgeL2n13QcoFo_JEGE4gPBbeV7
 const TICKET_CATEGORY_ID = "1496205350951715018";
 const TICKET_EMOJI = "🎫";
 
-// Comando !ticket
+// ================================
+// COMANDO !TICKET
+// ================================
+
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
 
-    if (message.content.trim().toLowerCase() === "!ticket") {
+    if (message.content.trim().toLowerCase() !== "!ticket") return;
+
+    try {
         const ticketEmbed = {
             color: 0xF1C40F,
             title: "🎫 SOPORTE EOS",
@@ -137,50 +143,87 @@ client.on("messageCreate", async (message) => {
         });
 
         await sentMessage.react(TICKET_EMOJI);
-        console.log("Mensaje de tickets publicado correctamente.");
+
+        console.log("✅ MENSAJE DE TICKETS PUBLICADO");
+
+    } catch (error) {
+        console.error("❌ ERROR PUBLICANDO TICKETS:", error);
     }
 });
 
-// Crear ticket al reaccionar
+
+// ================================
+// DETECTAR REACCIÓN Y CREAR TICKET
+// ================================
+
 client.on("messageReactionAdd", async (reaction, user) => {
-    console.log("REACCIÓN DETECTADA:", reaction.emoji.name, user.username);
 
     if (user.bot) return;
 
     try {
-        if (reaction.partial) await reaction.fetch();
-        if (reaction.message.partial) await reaction.message.fetch();
+        if (reaction.partial) {
+            await reaction.fetch();
+        }
 
+        if (reaction.message.partial) {
+            await reaction.message.fetch();
+        }
+
+        // Comprobar emoji
         if (reaction.emoji.name !== TICKET_EMOJI) return;
 
-        const guild = reaction.message.guild;
+        const message = reaction.message;
+
+        // Comprobar mensaje oficial EOS
+        if (message.author.id !== client.user.id) return;
+
+        const embed = message.embeds[0];
+
+        if (
+            !embed ||
+            embed.title !== "🎫 SOPORTE EOS" ||
+            embed.footer?.text !== "EOS ESPORTS • SUPPORT SYSTEM"
+        ) return;
+
+        console.log("🎫 REACCIÓN DETECTADA:", user.username);
+
+        const guild = message.guild;
+
         if (!guild) return;
 
-        const category = guild.channels.cache.get(TICKET_CATEGORY_ID);
+        // Comprobar categoría
+        const category = await guild.channels.fetch(TICKET_CATEGORY_ID);
 
-        if (!category) {
-            console.log("ERROR: No se encuentra la categoría de tickets.");
+        if (!category || category.type !== 4) {
+            console.log("❌ ERROR: Categoría de tickets inexistente.");
             return;
         }
 
         // Evitar tickets duplicados
-        const existingTicket = guild.channels.cache.find(channel =>
+        const channels = await guild.channels.fetch();
+
+        const existingTicket = channels.find(channel =>
+            channel &&
             channel.parentId === TICKET_CATEGORY_ID &&
             channel.name === `ticket-${user.id}`
         );
 
         if (existingTicket) {
-            await user.send(`Ya tienes un ticket abierto: ${existingTicket}`);
+            try {
+                await user.send(
+                    `⚠️ Ya tienes un ticket abierto: ${existingTicket}`
+                );
+            } catch {}
+
             return;
         }
-
-        const member = await guild.members.fetch(user.id);
 
         // Crear canal privado
         const ticketChannel = await guild.channels.create({
             name: `ticket-${user.id}`,
             type: 0,
-            parent: TICKET_CATEGORY_ID,
+            parent: category.id,
+
             permissionOverwrites: [
                 {
                     id: guild.roles.everyone.id,
@@ -207,35 +250,47 @@ client.on("messageReactionAdd", async (reaction, user) => {
             ]
         });
 
+        // Mensaje de bienvenida
         await ticketChannel.send({
             content:
-                `👋 ¡Hola ${member}!\n\n` +
-                `Tu ticket de soporte de **EOS** ha sido creado.\n` +
-                `Explica tu problema y el equipo te atenderá lo antes posible.\n\n` +
-                `🔒 Para cerrar el ticket, utiliza el comando \`!cerrar\`.`
+                `👋 ¡Bienvenido ${user}!\n\n` +
+                `Has abierto un ticket de soporte de **EOS**.\n\n` +
+                `Explica aquí qué necesitas y nuestro equipo te atenderá lo antes posible.\n\n` +
+                `🔒 Para cerrar el ticket utiliza \`!cerrar\`.`
         });
 
-        await user.send(`Tu ticket de EOS ha sido creado: ${ticketChannel}`);
+        console.log("✅ TICKET CREADO:", ticketChannel.name);
 
-        console.log("Ticket creado correctamente:", ticketChannel.name);
+        // Aviso privado
+        try {
+            await user.send(
+                `🎫 Tu ticket de EOS ha sido creado: ${ticketChannel}`
+            );
+        } catch {}
 
     } catch (error) {
-        console.error("ERROR CREANDO TICKET:", error);
+        console.error("❌ ERROR CREANDO TICKET:", error);
     }
 });
 
-// Comando !cerrar
+
+// ================================
+// COMANDO !CERRAR
+// ================================
+
 client.on("messageCreate", async (message) => {
     if (message.author.bot) return;
 
-    if (message.content.trim().toLowerCase() === "!cerrar") {
-        if (
-            message.channel.parentId !== TICKET_CATEGORY_ID ||
-            !message.channel.name.startsWith("ticket-")
-        ) {
-            return;
-        }
+    if (message.content.trim().toLowerCase() !== "!cerrar") return;
 
+    if (
+        message.channel.parentId !== TICKET_CATEGORY_ID ||
+        !message.channel.name.startsWith("ticket-")
+    ) {
+        return;
+    }
+
+    try {
         await message.channel.send(
             "🔒 Ticket cerrado. El canal se eliminará en 5 segundos."
         );
@@ -243,9 +298,11 @@ client.on("messageCreate", async (message) => {
         setTimeout(async () => {
             await message.channel.delete().catch(console.error);
         }, 5000);
+
+    } catch (error) {
+        console.error("❌ ERROR CERRANDO TICKET:", error);
     }
 });
-
 
 // =====================
 // LOGIN
